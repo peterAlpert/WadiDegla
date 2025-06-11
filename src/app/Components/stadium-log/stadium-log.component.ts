@@ -103,6 +103,8 @@ export class StadiumLogComponent implements OnInit {
 
 
   insult(player: Iplayer) {
+    console.log(player);
+
     this._Router.navigate([`/violation/${player.membership}/insult`], { state: { member: player } });
   }
 
