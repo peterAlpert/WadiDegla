@@ -24,6 +24,7 @@ export class ViolationDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     const nav = this.router.getCurrentNavigation();
     this.member = nav?.extras?.state?.['member'];
 

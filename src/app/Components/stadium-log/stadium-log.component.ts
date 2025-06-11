@@ -103,15 +103,15 @@ export class StadiumLogComponent implements OnInit {
 
 
   insult(player: Iplayer) {
-    this._Router.navigate(['/violation'], { state: { member: player } });
+    this._Router.navigate([`/violation/${player.membership}/insult`], { state: { member: player } });
   }
 
   joke(player: Iplayer) {
-    this._Router.navigate(['/violation'], { state: { member: player } });
+    this._Router.navigate([`/violation/${player.membership}/joke`], { state: { member: player } });
   }
 
   fight(player: Iplayer) {
-    this._Router.navigate(['/violation'], { state: { member: player } });
+    this._Router.navigate([`/violation/${player.membership}/fight`], { state: { member: player } });
 
   }
 
