@@ -1,0 +1,26 @@
+<div class="container py-4 text-end" dir="rtl">
+    <h4 class="text-center text-warning mb-4">سجل الانتهاكات لـ {{ member?.memberName }}</h4>
+
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>النوع</th>
+                <th>الملاحظات</th>
+                <th>التاريخ</th>
+                <th>الوقت</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of violations">
+                <td>{{ v.type }}</td>
+                <td>{{ v.note || '-' }}</td>
+                <td>{{ v.date }}</td>
+                <td>{{ v.time }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="violations.length === 0" class="alert alert-info text-center">
+        لا يوجد انتهاكات مسجلة لهذا العضو.
+    </div>
+</div>

@@ -1,4 +1,4 @@
 export const environment = {
-    baseUrl: 'http://degla.runasp.net/api'
+    baseUrl: 'https://degla.runasp.net/api'
 };
 

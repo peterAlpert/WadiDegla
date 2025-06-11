@@ -103,43 +103,22 @@ export class StadiumLogComponent implements OnInit {
 
 
   insult(player: Iplayer) {
-    this._StadiumService.addInsult(player.id).subscribe({
-      next: () => {
-        this._ToastrService.success('تم تسجيل التلفظ');
-        this.getAllData();
-        this.checkWarnings();
-      },
-      error: () => {
-        this._ToastrService.error('حدث خطأ أثناء التسجيل');
-      }
-    });
+    this._Router.navigate(['/violation-details'], { state: { member: player } });
   }
 
   joke(player: Iplayer) {
-    this._StadiumService.addJoke(player.id).subscribe({
-      next: () => {
-        this._ToastrService.success('تم تسجيل الهزار');
-        this.getAllData();
-        this.checkWarnings();
-      },
-      error: () => {
-        this._ToastrService.error('حدث خطأ أثناء التسجيل');
-      }
-    });
+    this._Router.navigate(['/violation-details'], { state: { member: player } });
   }
 
   fight(player: Iplayer) {
-    this._StadiumService.addFight(player.id).subscribe({
-      next: () => {
-        this._ToastrService.success('تم تسجيل المشادة');
-        this.getAllData();
-        this.checkWarnings();
-      },
-      error: () => {
-        this._ToastrService.error('حدث خطأ أثناء التسجيل');
-      }
-    });
+    this._Router.navigate(['/violation-details'], { state: { member: player } });
+
   }
+
+  viewHistory(member: any) {
+    this._Router.navigateByUrl('/violation-history', { state: { member } });
+  }
+
 
   checkWarnings() {
     this.filteredData.forEach(player => {
