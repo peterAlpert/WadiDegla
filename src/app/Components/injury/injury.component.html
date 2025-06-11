@@ -1,0 +1,57 @@
+<div class="container py-4" dir="rtl">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 bg-light rounded shadow p-4">
+
+            <h3 class="text-center text-warning mb-4">تسجيل إصابة</h3>
+
+            <div class="mb-3 text-end">
+                <strong>اسم العضو:</strong> {{ player.memberName }}
+            </div>
+            <div class="mb-3 text-end">
+                <strong>رقم العضوية:</strong> {{ player.membership }}
+            </div>
+            <div class="mb-4 text-end">
+                <strong>رقم الملعب:</strong> {{ player.stadeNo }}
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">نوع الإصابة</label>
+                <select class="form-select text-end" [(ngModel)]="injuryType">
+                    <option value="" disabled selected>اختر نوع الإصابة</option>
+                    <option>كدمة</option>
+                    <option>سجعة</option>
+                    <option>جرح</option>
+                    <option>ألم</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">مكان الإصابة بالجسم</label>
+                <input type="text" class="form-control text-end" [(ngModel)]="injuryLocation"
+                    placeholder="مثال: الركبة اليمنى" />
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">الإجراء المتخذ</label>
+                <textarea class="form-control text-end" rows="3" [(ngModel)]="actionTaken"
+                    placeholder="مثال: وضع ثلج وتم التواصل مع ولي الأمر"></textarea>
+            </div>
+
+            <div class="text-center mb-3">
+                <button class="btn btn-warning w-50" (click)="generateInjuryReport()">توليد التقرير</button>
+            </div>
+
+            <div *ngIf="injuryReport">
+                <div class="alert alert-info text-end">
+                    <pre class="mb-0" style="white-space: pre-wrap" #reportBox>{{ injuryReport }}</pre>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-outline-dark" (click)="copyToClipboard(reportBox.innerText)">نسخ
+                        التقرير</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

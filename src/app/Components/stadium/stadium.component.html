@@ -1,0 +1,38 @@
+<form class="container py-2">
+    <h1 class="text-center text-warning pb-3">تسجيل لاعب جديد</h1>
+    <hr />
+
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+        <div class="fw-bold text-warning fs-5 text-center text-md-start">
+            {{ todayDate | date: 'EEEE d-M-yyyy':'':'ar-EG' }}
+        </div>
+    </div>
+
+    <div class="mb-3 text-end">
+        <label class="form-label">اسم العضو</label>
+        <input class="form-control text-end" type="text" [(ngModel)]="member.memberName" name="memberName"
+            placeholder="ادخل اسم العضو" />
+    </div>
+
+    <div class="mb-3 text-end">
+        <label class="form-label">رقم العضوية</label>
+        <input class="form-control text-end" type="number" [(ngModel)]="member.membership" name="membership"
+            placeholder="ادخل رقم العضوية" />
+    </div>
+
+    <div class="mb-3 text-end">
+        <label class="form-label" for="stadeNo">رقم الملعب</label>
+        <select class="form-select text-end" id="stadeNo" [(ngModel)]="member.stadeNo" name="stadeNo">
+            <option [value]="1">1</option>
+            <option [value]="2">2</option>
+            <option [value]="3">3</option>
+            <option [value]="4">4</option>
+        </select>
+    </div>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-warning w-100 mt-3" (click)="register()">
+            تسجيل دخول الملعب
+        </button>
+    </div>
+</form>

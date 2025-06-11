@@ -1,0 +1,116 @@
+[debug] [2025-06-11T14:54:16.191Z] ----------------------------------------------------------------------
+[debug] [2025-06-11T14:54:16.198Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Peter Alpert\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-06-11T14:54:16.199Z] CLI Version:   14.6.0
+[debug] [2025-06-11T14:54:16.200Z] Platform:      win32
+[debug] [2025-06-11T14:54:16.200Z] Node Version:  v20.17.0
+[debug] [2025-06-11T14:54:16.200Z] Time:          Wed Jun 11 2025 17:54:16 GMT+0300 (توقيت شرق أوروبا الصيفي)
+[debug] [2025-06-11T14:54:16.201Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-11T14:54:16.216Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-11T14:54:16.217Z] > authorizing via signed-in user (peterkameel.93@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Peter Alpert\OneDrive\Desktop\DeglaPro\FrontEnd
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-06-11T14:54:38.003Z] Checked if tokens are valid: true, expires at: 1749657154478
+[debug] [2025-06-11T14:54:38.004Z] Checked if tokens are valid: true, expires at: 1749657154478
+[debug] [2025-06-11T14:54:38.007Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2025-06-11T14:54:38.783Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-06-11T14:54:38.783Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-06-11T14:55:56.633Z] ----------------------------------------------------------------------
+[debug] [2025-06-11T14:55:56.636Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Peter Alpert\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-06-11T14:55:56.636Z] CLI Version:   14.6.0
+[debug] [2025-06-11T14:55:56.637Z] Platform:      win32
+[debug] [2025-06-11T14:55:56.637Z] Node Version:  v20.17.0
+[debug] [2025-06-11T14:55:56.637Z] Time:          Wed Jun 11 2025 17:55:56 GMT+0300 (توقيت شرق أوروبا الصيفي)
+[debug] [2025-06-11T14:55:56.637Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-11T14:55:56.644Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-11T14:55:56.645Z] > authorizing via signed-in user (peterkameel.93@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Peter Alpert\OneDrive\Desktop\DeglaPro\FrontEnd
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2025-06-11T14:57:32.940Z] Checked if tokens are valid: true, expires at: 1749657154478
+[debug] [2025-06-11T14:57:32.941Z] Checked if tokens are valid: true, expires at: 1749657154478
+[debug] [2025-06-11T14:57:32.944Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2025-06-11T14:57:32.944Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"dist/degla/browser","name":"dist/degla/browser"}
+[debug] [2025-06-11T14:57:33.950Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
+[debug] [2025-06-11T14:57:33.950Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"Request contains an invalid argument.","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id contains invalid characters"},{"field":"display_name","description":"project display name contains invalid characters"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2025-06-11T14:57:34.169Z] FirebaseError: Request to https://cloudresourcemanager.googleapis.com/v1/projects had HTTP Error: 400, Request contains an invalid argument.
+    at responseToError (C:\Users\Peter Alpert\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:52:12)
+    at RetryOperation._fn (C:\Users\Peter Alpert\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:312:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
+[debug] [2025-06-11T14:57:51.456Z] ----------------------------------------------------------------------
+[debug] [2025-06-11T14:57:51.463Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Peter Alpert\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-06-11T14:57:51.464Z] CLI Version:   14.6.0
+[debug] [2025-06-11T14:57:51.465Z] Platform:      win32
+[debug] [2025-06-11T14:57:51.465Z] Node Version:  v20.17.0
+[debug] [2025-06-11T14:57:51.466Z] Time:          Wed Jun 11 2025 17:57:51 GMT+0300 (توقيت شرق أوروبا الصيفي)
+[debug] [2025-06-11T14:57:51.466Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-11T14:57:51.482Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-11T14:57:51.483Z] > authorizing via signed-in user (peterkameel.93@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Peter Alpert\OneDrive\Desktop\DeglaPro\FrontEnd
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2025-06-11T15:12:33.885Z] ExitPromptError: User force closed the prompt with SIGINT
+    at Interface.sigint (C:\Users\Peter Alpert\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\@inquirer\core\dist\commonjs\lib\create-prompt.js:101:37)
+    at Interface.emit (node:events:519:28)
+    at Interface.emit (node:domain:488:12)
+    at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1126:18)
+    at ReadStream.onkeypress (node:internal/readline/interface:265:20)
+    at ReadStream.emit (node:events:531:35)
+    at ReadStream.emit (node:domain:488:12)
+    at emitKeys (node:internal/readline/utils:371:14)
+    at emitKeys.next (<anonymous>)
+    at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+[error] 
+[error] Error: An unexpected error has occurred.

@@ -1,0 +1,129 @@
+<div class="container text-end" dir="rtl">
+    <h2 class="text-center text-warning pb-3">بيانات الملاعب</h2>
+    <hr />
+
+    <!-- شريط الفلترة -->
+    <div class="row align-items-end g-3 mb-3">
+        <div class="col-12 col-md-6">
+            <input type="text" class="form-control" placeholder="ابحث بالاسم أو رقم العضوية" [(ngModel)]="searchTerm"
+                (input)="filterBySearch()" />
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="input-group">
+                <span class="input-group-text bg-warning text-dark">
+                    <i class="bi bi-calendar-date"></i>
+                </span>
+                <input type="date" class="form-control" [(ngModel)]="filterDate" (change)="filterByDate()" />
+            </div>
+        </div>
+    </div>
+
+    <!-- عدد اللاعبين -->
+    <div class="text-center text-white bg-warning rounded py-2 shadow-sm mb-4">
+        عدد اللاعبين المعروضين:
+        <span class="fw-bold">{{ filteredData.length }}</span>
+    </div>
+
+    <!-- فلاتر الملاعب -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+        <button class="btn btn-outline-primary" (click)="showAll()">الكل</button>
+        <button class="btn btn-outline-warning" (click)="filterByStadium(1)">ملعب 1</button>
+        <button class="btn btn-outline-warning" (click)="filterByStadium(2)">ملعب 2</button>
+        <button class="btn btn-outline-warning" (click)="filterByStadium(3)">ملعب 3</button>
+        <button class="btn btn-outline-warning" (click)="filterByStadium(4)">ملعب 4</button>
+    </div>
+
+
+    <div class="my-3 d-flex justify-content-center gap-2 flex-wrap">
+        <button class="btn btn-sm btn-outline-danger" (click)="sortBy('insult')">ترتيب حسب التلفظ</button>
+        <button class="btn btn-sm btn-outline-warning" (click)="sortBy('joke')">ترتيب حسب الهزار</button>
+        <button class="btn btn-sm btn-outline-primary" (click)="sortBy('fight')">ترتيب حسب المشادة</button>
+
+    </div>
+
+
+    <!-- الجدول -->
+    <div class="table-responsive">
+        <table class="table table-bordered text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>العضو</th>
+                    <th>العضوية</th>
+                    <th>الملعب</th>
+                    <th>الوقت</th>
+                    <th>التاريخ</th>
+                    <th>كنترول</th>
+                    <th>تلفظ</th>
+                    <th>هزار</th>
+                    <th>تشاجر</th>
+                    <th>اصابه</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of filteredData; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ item.memberName }}</td>
+                    <td>{{ item.membership }}</td>
+                    <td>{{ item.stadeNo }}</td>
+                    <td>{{ convertTo12Hour(item.time) }}</td>
+                    <td>{{ item.date | date:'MM-dd' }}</td>
+                    <td>{{ item.controlName }}</td>
+                    <td>
+                        <button class="btn btn-outline-dark btn-sm position-relative" (click)="insult(item)">
+                            تلفظ
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                [ngClass]="{
+                                'bg-warning text-dark': item.insult < 5,
+                                'bg-danger': item.insult >= 5 && item.insult <= 8,
+                                'bg-dark text-white': item.insult > 8
+                                }">
+                                {{ item.insult }}
+                            </span>
+                        </button>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-dark btn-sm position-relative" (click)="joke(item)">
+                            هزار
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                [ngClass]="{
+                                'bg-warning text-dark': item.joke < 5,
+                                'bg-danger': item.joke >= 5 && item.joke <= 8,
+                                'bg-dark text-white': item.joke > 8
+                                }">
+                                {{ item.joke }}
+                            </span>
+                        </button>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-dark btn-sm position-relative" (click)="fight(item)">
+                            مشادة
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                [ngClass]="{
+                                'bg-warning text-dark': item.fight < 5,
+                                'bg-danger': item.fight >= 5 && item.fight <= 8,
+                                'bg-dark text-white': item.fight > 8
+                                }">
+                                {{ item.fight }}
+                            </span>
+                        </button>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="goToInjuryPage(item)">
+                            إصابة
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- لا توجد بيانات -->
+    <div *ngIf="filteredData.length === 0" class="alert alert-warning text-center mt-3">
+        لا توجد بيانات لهذا الملعب
+    </div>
+</div>
