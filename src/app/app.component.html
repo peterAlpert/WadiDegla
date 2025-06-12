@@ -7,6 +7,19 @@
         <router-outlet></router-outlet>
       </div>
 
+      <!-- أزرار التنقل الثابتة -->
+      <div style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+        <button class="btn btn-dark rounded-circle shadow" (click)="scrollToTop()" title="أعلى">
+          <i class="bi bi-arrow-up"></i>
+        </button>
+      </div>
+
+      <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <button class="btn btn-secondary rounded-circle shadow" (click)="goBack()" title="رجوع">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+      </div>
+
       <app-footer></app-footer>
     </div>
   </div>
