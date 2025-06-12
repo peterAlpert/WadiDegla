@@ -14,6 +14,9 @@ import { ViolationService } from '../../Services/violation.service';
 })
 export class ViolationDetailsComponent implements OnInit {
   member: any;
+  membership: any = 0;
+  memberName: any = '';
+  type: any = '';
   note: string = '';
   date: string = '';
   time: string = '';
@@ -31,8 +34,11 @@ export class ViolationDetailsComponent implements OnInit {
     this.member = nav?.extras?.state?.['member'];
 
     if (!this.member) {
-      const membership = this.route.snapshot.paramMap.get('id');
-      console.warn('العضو مش موجود في state، ممكن تجيب بياناته بـ id:', membership);
+      this.memberName = this.route.snapshot.paramMap.get('name');
+      this.membership = this.route.snapshot.paramMap.get('id');
+      this.type = this.route.snapshot.paramMap.get('type');
+      console.warn(this.membership);
+      console.warn(this.membership);
     }
 
     const now = new Date();
@@ -46,12 +52,12 @@ export class ViolationDetailsComponent implements OnInit {
     const time = now.toTimeString().split(':').slice(0, 2).join(':');
 
     const violation = {
-      name: this.member.memberName,
-      membership: this.member.membership,
+      name: this.memberName,
+      membership: this.membership,
       note: this.note,
       date: date,
       time: time,
-      type: type
+      type: this.type
     };
 
     this.violationService.saveViolation(violation).subscribe(() => {

@@ -12,7 +12,7 @@ import { ViolationHistoryComponent } from './Components/violation-history/violat
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'controlInfo' },
     { path: 'enterStadium', component: StadiumComponent },
-    { path: 'violation/:id/:type', component: ViolationDetailsComponent },
+    { path: 'violation/:name/:id/:type', component: ViolationDetailsComponent },
     { path: "violation-history", component: ViolationHistoryComponent },
     { path: 'controlInfo', component: StartComponent },
     { path: 'injury', component: InjuryComponent },
