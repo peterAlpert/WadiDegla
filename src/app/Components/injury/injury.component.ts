@@ -42,4 +42,8 @@ export class InjuryComponent {
     });
   }
 
+  isFormInvalid(): boolean {
+    return !this.injuryLocation || !this.actionTaken;
+  }
+
 }

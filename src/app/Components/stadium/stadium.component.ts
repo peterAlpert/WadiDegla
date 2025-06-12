@@ -90,4 +90,16 @@ export class StadiumComponent implements OnInit {
     });
   }
 
+  isFormValid(): boolean {
+    const nameValid = this.member.memberName?.trim().split(' ').length >= 2;
+    const membershipValid = /^\d{5,6}$/.test(String(this.member.membership));
+    return nameValid && membershipValid;
+  }
+
+  isMembershipInvalid(): boolean {
+    const value = String(this.member.membership || '');
+    return !/^\d{5,6}$/.test(value);
+  }
+
+
 }

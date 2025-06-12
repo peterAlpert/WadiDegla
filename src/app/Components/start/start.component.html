@@ -9,9 +9,13 @@
                 <input id="controlName" type="text" [(ngModel)]="controlName" class="form-control text-end" name="name"
                     placeholder="مثال: محمد عبد الله" />
             </div>
+            <div *ngIf="controlName !== undefined && !controlName.trim().length" class="text-danger small mt-1">
+                الاسم مطلوب
+            </div>
 
             <div class="text-center">
-                <button type="button" class="btn btn-warning px-5 py-2 fw-bold shadow-sm" (click)="saveName()">
+                <button type="button" class="btn btn-warning px-5 py-2 fw-bold shadow-sm"
+                    [disabled]="!controlName || !controlName.trim().length" (click)="saveName()">
                     استمرار
                 </button>
             </div>
