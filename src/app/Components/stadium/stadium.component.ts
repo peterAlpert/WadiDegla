@@ -75,16 +75,16 @@ export class StadiumComponent implements OnInit {
 
   // ✅ إضافة دخول جديد
   addEntry(MemberName: string, Membership: number, StadeNo: number, Date: string, Time: string) {
-    const entry = {
+    const newEntry = {
       MemberName,
       Membership,
       StadeNo,
-      Date,
-      Time,
-      ControlName: this.controlName
+      Date: this.todayDate,
+      Time: this.timeOnly,
+      controlName: this.controlName
     };
 
-    this.http.post(`${environment.baseUrl}/Stade/addEntry`, entry).subscribe({
+    this.http.post(`${environment.baseUrl}/Stade/addEntry`, newEntry).subscribe({
       next: () => {
         this.toastr.success('تم تسجيل الدخول للملعب');
         this.resetForm();
