@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './Components/footer/footer.component';
 import { HeaderComponent } from './Components/header/header.component';
@@ -11,9 +11,13 @@ import { HeaderComponent } from './Components/header/header.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'degla';
+  controlName: any = '';
   constructor(private _Location: Location) { }
+  ngOnInit(): void {
+    this.controlName = localStorage.getItem('controlName');
+  }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
