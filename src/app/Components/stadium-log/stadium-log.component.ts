@@ -44,7 +44,7 @@ export class StadiumLogComponent implements OnInit {
   }
 
   getAllData() {
-    this.http.get<any[]>(`${environment.baseUrl}/Members/first-entries`).subscribe((res) => {
+    this.http.get<any[]>(`${environment.baseUrl}/Entry/first-entries`).subscribe((res) => {
       this.allData = res;
       this.filteredData = res;
     });
@@ -150,6 +150,7 @@ export class StadiumLogComponent implements OnInit {
   goToEntryPage(member: any) {
     this._Router.navigate(['/entry-log'], { state: { member } });
   }
+
   viewEntryHistory(member: any) {
     this._Router.navigate(['/entry-history'], { state: { member: member } });
   }
