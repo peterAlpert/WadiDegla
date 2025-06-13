@@ -44,6 +44,8 @@ export class StadiumComponent implements OnInit {
     const now = new Date();
     this.timeOnly = now.toTimeString().slice(0, 5);
     const dateOnly = now.toISOString().split('T')[0];
+    console.log(this.member);
+
 
     const { memberName, membership, stadeNo } = this.member;
 
