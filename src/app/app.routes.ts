@@ -7,6 +7,7 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { StadiumLogComponent } from './Components/stadium-log/stadium-log.component';
 import { ViolationDetailsComponent } from './Components/violation-details/violation-details.component';
 import { ViolationHistoryComponent } from './Components/violation-history/violation-history.component';
+import { EntryLogComponent } from './Components/entry-log/entry-log.component';
 
 
 export const routes: Routes = [
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: "violation-history", component: ViolationHistoryComponent },
     { path: 'controlInfo', component: StartComponent },
     { path: 'injury', component: InjuryComponent },
+    { path: 'entry-log', component: EntryLogComponent },
     { path: 'stadiumLog', component: StadiumLogComponent },
     { path: '**', component: NotFoundComponent }
 

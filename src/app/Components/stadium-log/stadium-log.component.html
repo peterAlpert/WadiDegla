@@ -51,10 +51,8 @@
                     <th>#</th>
                     <th>العضو</th>
                     <th>العضوية</th>
-                    <th>الملعب</th>
-                    <th>الوقت</th>
-                    <th>التاريخ</th>
-                    <th>كنترول</th>
+                    <th>سجل دخول الملعب</th>
+                    <th>تسجيل جديد</th>
                     <th>تلفظ</th>
                     <th>هزار</th>
                     <th>تشاجر</th>
@@ -66,15 +64,79 @@
                     <td>{{ i + 1 }}</td>
                     <td>{{ item.memberName }}</td>
                     <td>{{ item.membership }}</td>
-                    <td>{{ item.firstEntry?.stadeNo }}</td>
-                    <td>{{ convertTo12Hour(item.firstEntry?.entryTime) }}</td>
-                    <td>{{ item.firstEntry?.entryTime | date:'yyyy-MM-dd' }}</td>
+
+                    <!-- زر واحد بدلاً من الملعب والوقت والتاريخ -->
+                    <td colspan="3">
+                        <button class="btn btn-outline-primary btn-sm w-100" (click)="goToEntryPage(item)">
+                            سجل دخول العضو
+                        </button>
+                    </td>
+
                     <td>
                         <button class="btn btn-sm btn-success" (click)="goToEntryPage(item)">تسجيل دخول</button>
-
                     </td>
                 </tr>
 
+                <!-- <tr *ngFor="let item of filteredData; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                        <button class="btn btn-outline-primary border-0   p-0" (click)="viewHistory(item)">
+                            {{ item.memberName }}
+                        </button>
+                    </td>
+                    <td>{{ item.membership }}</td>
+                    <td>{{ item.stadeNo }}</td>
+                    <td>{{ convertTo12Hour(item.time) }}</td>
+                    <td>{{ item.date | date:'MM-dd' }}</td>
+                    <td>{{ item.controlName }}</td>
+                    <td>
+                        <button class="btn btn-outline-dark btn-sm position-relative" (click)="insult(item)">
+                            تلفظ
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                [ngClass]="{
+                                'bg-warning text-dark': item.insult < 5,
+                                'bg-danger': item.insult >= 5 && item.insult <= 8,
+                                'bg-dark text-white': item.insult > 8
+                                }">
+                                {{ item.insult }}
+                            </span>
+                        </button>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-dark btn-sm position-relative" (click)="joke(item)">
+                            هزار
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                [ngClass]="{
+                                'bg-warning text-dark': item.joke < 5,
+                                'bg-danger': item.joke >= 5 && item.joke <= 8,
+                                'bg-dark text-white': item.joke > 8
+                                }">
+                                {{ item.joke }}
+                            </span>
+                        </button>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-dark btn-sm position-relative" (click)="fight(item)">
+                            مشادة
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
+                                [ngClass]="{
+                                'bg-warning text-dark': item.fight < 5,
+                                'bg-danger': item.fight >= 5 && item.fight <= 8,
+                                'bg-dark text-white': item.fight > 8
+                                }">
+                                {{ item.fight }}
+                            </span>
+                        </button>
+
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" (click)="goToInjuryPage(item)">
+                            إصابة
+                        </button>
+                    </td>
+                </tr> -->
             </tbody>
         </table>
     </div>
