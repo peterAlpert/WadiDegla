@@ -12,7 +12,7 @@
     <form (ngSubmit)="submitEntry()" dir="rtl">
         <div class="mb-3">
             <label class="form-label">رقم الملعب</label>
-            <select class="form-select" [(ngModel)]="stadeNo" name="stadeNo" required>
+            <select class="form-select" [(ngModel)]="StadeNo" name="stadeNo" required>
                 <option [ngValue]="1">ملعب 1</option>
                 <option [ngValue]="2">ملعب 2</option>
                 <option [ngValue]="3">ملعب 3</option>
@@ -21,8 +21,8 @@
         </div>
 
         <!-- Hidden inputs لإرسال التاريخ والوقت -->
-        <input type="hidden" [value]="date" name="entryDate" />
-        <input type="hidden" [value]="time" name="entryTime" />
+        <input type="hidden" [value]="Date" name="entryDate" />
+        <input type="hidden" [value]="Time" name="entryTime" />
 
         <button type="submit" class="btn btn-success w-100 mt-3">تسجيل الدخول</button>
     </form>

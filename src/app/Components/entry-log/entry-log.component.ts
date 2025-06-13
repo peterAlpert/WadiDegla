@@ -13,9 +13,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class EntryLogComponent implements OnInit {
   member: any;
-  stadeNo: number = 1;
-  date: string = '';
-  time: string = '';
+  StadeNo: number = 1;
+  Date: string = '';
+  Time: string = '';
+  ControlName: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,13 +26,14 @@ export class EntryLogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.ControlName = localStorage.getItem('controlName');
     const nav = history.state;
     if (nav && nav.member) {
       this.member = nav.member;
 
       const now = new Date();
-      this.date = now.toISOString().split('T')[0]; // yyyy-mm-dd
-      this.time = now.toTimeString().split(' ')[0].slice(0, 5); // hh:mm
+      this.Date = now.toISOString().split('T')[0]; // yyyy-mm-dd
+      this.Time = now.toTimeString().split(' ')[0].slice(0, 5); // hh:mm
     } else {
       this.router.navigate(['/']); // رجوع في حالة عدم وجود بيانات
     }
@@ -39,10 +41,12 @@ export class EntryLogComponent implements OnInit {
 
   submitEntry() {
     const entryData = {
-      memberId: this.member.id,
-      stadeNo: this.stadeNo,
-      date: this.date,
-      time: this.time
+      MemberName: this.member.MemberName,
+      Membership: this.member.Membership,
+      StadeNo: this.StadeNo,
+      Date: this.Date,
+      Time: this.Time,
+      ControlName: this.ControlName
     };
 
     this.stadiumService.addEntry(entryData).subscribe({
