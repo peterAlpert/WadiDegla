@@ -63,13 +63,13 @@ export class StadiumComponent implements OnInit {
 
           this.http.post(`${environment.baseUrl}/Entry/register-entry`, newMember).subscribe({
             next: () => {
-              this.addEntry(membership, stadeNo, dateOnly, this.timeOnly);
+              this.addEntry(memberName, membership, stadeNo, dateOnly, this.timeOnly);
             },
             error: () => this.toastr.error('فشل في تسجيل بيانات العضو الجديدة')
           });
         } else {
           // العضو موجود فقط سجل الدخول
-          this.addEntry(membership, stadeNo, dateOnly, this.timeOnly);
+          this.addEntry(memberName, membership, stadeNo, dateOnly, this.timeOnly);
         }
       },
       error: () => this.toastr.error('فشل في التحقق من العضو')
@@ -77,13 +77,14 @@ export class StadiumComponent implements OnInit {
   }
 
   // ✅ إضافة دخول جديد
-  addEntry(membership: number, stadeNo: number, date: string, time: string) {
+  addEntry(MemberName: string, Membership: number, StadeNo: number, Date: string, Time: string) {
     const entry = {
-      membership,
-      stadeNo,
-      date,
-      time,
-      controlName: this.controlName
+      MemberName,
+      Membership,
+      StadeNo,
+      Date,
+      Time,
+      ControlName: this.controlName
     };
 
     this.http.post(`${environment.baseUrl}/Stade/addEntry`, entry).subscribe({
