@@ -150,5 +150,8 @@ export class StadiumLogComponent implements OnInit {
   goToEntryPage(member: any) {
     this._Router.navigate(['/entry-log'], { state: { member } });
   }
+  viewEntryHistory(member: any) {
+    this._Router.navigate(['/entry-history'], { state: { member: member } });
+  }
 
 }

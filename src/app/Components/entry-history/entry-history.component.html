@@ -1,0 +1,28 @@
+<div class="container py-4">
+    <h3 class="text-center text-primary mb-4">
+        سجل دخول: {{ member?.memberName }} ({{ member?.membership }})
+    </h3>
+
+    <table class="table table-bordered text-center">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>التاريخ</th>
+                <th>الوقت</th>
+                <th>رقم الملعب</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entry of entries; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ entry.entryTime | date: 'yyyy-MM-dd' }}</td>
+                <td>{{ entry.entryTime | date: 'hh:mm a' }}</td>
+                <td>{{ entry.stadeNo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="entries.length === 0" class="alert alert-warning text-center">
+        لا توجد سجلات دخول لهذا العضو
+    </div>
+</div>

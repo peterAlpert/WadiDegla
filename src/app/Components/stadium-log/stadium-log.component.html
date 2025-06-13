@@ -51,7 +51,7 @@
                     <th>#</th>
                     <th>العضو</th>
                     <th>العضوية</th>
-                    <th>سجل دخول الملعب</th>
+                    <th colspan="2">سجل دخول الملعب</th>
                     <th>تسجيل جديد</th>
                     <th>تلفظ</th>
                     <th>هزار</th>
@@ -66,8 +66,8 @@
                     <td>{{ item.membership }}</td>
 
                     <!-- زر واحد بدلاً من الملعب والوقت والتاريخ -->
-                    <td colspan="3">
-                        <button class="btn btn-outline-primary btn-sm w-100" (click)="goToEntryPage(item)">
+                    <td colspan="2">
+                        <button class="btn btn-outline-primary btn-sm w-100" (click)="viewEntryHistory(item)">
                             سجل دخول العضو
                         </button>
                     </td>
