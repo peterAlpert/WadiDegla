@@ -1,10 +1,15 @@
 <div class="container py-4">
-    <div class="text-center mb-4">
-        <h3 class="text-primary">تسجيل دخول عضو</h3>
-        <p>👤 {{ member?.memberName }} - 🪪 عضوية: {{ member?.membership }}</p>
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center">
+            <h4 class="card-title text-primary">تسجيل دخول عضو</h4>
+            <p class="card-text fs-5 mt-3">
+                👤 <strong>{{ member?.memberName }}</strong><br />
+                🪪 عضوية رقم: <strong>{{ member?.membership }}</strong>
+            </p>
+        </div>
     </div>
 
-    <form (ngSubmit)="submitEntry()">
+    <form (ngSubmit)="submitEntry()" dir="rtl">
         <div class="mb-3">
             <label class="form-label">رقم الملعب</label>
             <select class="form-select" [(ngModel)]="stadeNo" name="stadeNo" required>
@@ -15,16 +20,10 @@
             </select>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">التاريخ</label>
-            <input type="date" class="form-control" [value]="date" readonly />
-        </div>
+        <!-- Hidden inputs لإرسال التاريخ والوقت -->
+        <input type="hidden" [value]="date" name="entryDate" />
+        <input type="hidden" [value]="time" name="entryTime" />
 
-        <div class="mb-3">
-            <label class="form-label">الوقت</label>
-            <input type="text" class="form-control" [value]="time" readonly />
-        </div>
-
-        <button type="submit" class="btn btn-success w-100">تسجيل الدخول</button>
+        <button type="submit" class="btn btn-success w-100 mt-3">تسجيل الدخول</button>
     </form>
 </div>
