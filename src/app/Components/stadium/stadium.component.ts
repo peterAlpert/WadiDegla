@@ -61,7 +61,7 @@ export class StadiumComponent implements OnInit {
             membership
           };
 
-          this.http.post(`${environment.baseUrl}/Member/add`, newMember).subscribe({
+          this.http.post(`${environment.baseUrl}/Entry/register-entry`, newMember).subscribe({
             next: () => {
               this.addEntry(membership, stadeNo, dateOnly, this.timeOnly);
             },
