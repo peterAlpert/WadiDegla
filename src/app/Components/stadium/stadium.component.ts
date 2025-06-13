@@ -41,7 +41,7 @@ export class StadiumComponent implements OnInit {
 
   // ✅ التحقق من وجود العضو
   checkMemberExists(membership: number) {
-    return this.http.get<boolean>(`${environment.baseUrl}/Member/check/${membership}`);
+    return this.http.get<boolean>(`${environment.baseUrl}/Member/${membership}`);
   }
 
   // ✅ تسجيل الدخول
