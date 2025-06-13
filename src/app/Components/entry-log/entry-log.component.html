@@ -1,0 +1,30 @@
+<div class="container py-4">
+    <div class="text-center mb-4">
+        <h3 class="text-primary">تسجيل دخول عضو</h3>
+        <p>👤 {{ member?.memberName }} - 🪪 عضوية: {{ member?.membership }}</p>
+    </div>
+
+    <form (ngSubmit)="submitEntry()">
+        <div class="mb-3">
+            <label class="form-label">رقم الملعب</label>
+            <select class="form-select" [(ngModel)]="stadeNo" name="stadeNo" required>
+                <option [ngValue]="1">ملعب 1</option>
+                <option [ngValue]="2">ملعب 2</option>
+                <option [ngValue]="3">ملعب 3</option>
+                <option [ngValue]="4">ملعب 4</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">التاريخ</label>
+            <input type="date" class="form-control" [value]="date" readonly />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">الوقت</label>
+            <input type="text" class="form-control" [value]="time" readonly />
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">تسجيل الدخول</button>
+    </form>
+</div>

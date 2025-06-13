@@ -44,11 +44,11 @@ export class StadiumLogComponent implements OnInit {
   }
 
   getAllData() {
-    this._StadiumService.getAll().subscribe(data => {
-      this.allData = data;
-      this.filteredData = data;
-      this.checkWarnings();
+    this.http.get<any[]>(`${environment.baseUrl}/Members/first-entries`).subscribe((res) => {
+      this.allData = res;
+      this.filteredData = res;
     });
+
   }
 
   filterByStadium(no: number) {
@@ -69,13 +69,16 @@ export class StadiumLogComponent implements OnInit {
   }
 
 
-  convertTo12Hour(time: string): string {
-    const [hourStr, minuteStr] = time.split(':');
-    let hour = parseInt(hourStr, 10);
-    const minute = minuteStr;
-    hour = hour % 12 || 12;
-    return `${hour}:${minute}`;
+  convertTo12Hour(dateTime: string | Date | null): string {
+    if (!dateTime) return '';
+    const date = new Date(dateTime);
+    let hours = date.getHours();
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    const period = hours >= 12 ? 'م' : 'ص';
+    hours = hours % 12 || 12;
+    return `${hours}:${minutes} ${period}`;
   }
+
 
   resetDateFilter() {
     this.filterDate = '';
@@ -142,6 +145,10 @@ export class StadiumLogComponent implements OnInit {
 
   goToInjuryPage(player: any) {
     this._Router.navigate(['/injury'], { state: { player } });
+  }
+
+  goToEntryPage(member: any) {
+    this._Router.navigate(['/entry-log'], { state: { member } });
   }
 
 }

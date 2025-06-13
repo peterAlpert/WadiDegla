@@ -30,4 +30,9 @@ export class StadiumService {
     return this.http.post(`${this.baseUrl}/add-fight/${id}`, {});
   }
 
+  addEntry(entry: { memberId: number; stadeNo: number; date: string; time: string }) {
+    return this.http.post(`${environment.baseUrl}/StadiumEntries`, entry);
+  }
+
+
 }
