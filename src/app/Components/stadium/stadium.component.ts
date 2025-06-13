@@ -39,66 +39,55 @@ export class StadiumComponent implements OnInit {
     this.resetForm();
   }
 
-  // ✅ تسجيل الدخول
   register() {
     const now = new Date();
     this.timeOnly = now.toTimeString().slice(0, 5);
     const dateOnly = now.toISOString().split('T')[0];
-    console.log(this.member);
 
+    const dto = {
+      MemberName: this.member.memberName,
+      Membership: this.member.membership,
+      StadeNo: this.member.stadeNo,
+      Date: dateOnly,
+      Time: this.timeOnly,
+      ControlName: this.controlName
+    };
 
-    const { memberName, membership, stadeNo } = this.member;
-
-    this.checkMemberExists(membership).subscribe({
-      next: (memberExists) => {
-        if (!memberExists) {
-          // إضافة العضو لأول مرة
-          const newMember = {
-            memberName,
-            membership
-          };
-
-          this.http.post(`${environment.baseUrl}/Entry/register-entry`, newMember).subscribe({
-            next: () => {
-              this.addEntry(memberName, membership, stadeNo, dateOnly, this.timeOnly);
-            },
-            error: () => this.toastr.error('فشل في تسجيل بيانات العضو الجديدة')
-          });
-        } else {
-          // العضو موجود فقط سجل الدخول
-          this.addEntry(memberName, membership, stadeNo, dateOnly, this.timeOnly);
-        }
+    this.http.post(`${environment.baseUrl}/Entry/register-entry`, dto).subscribe({
+      next: (res: any) => {
+        this.toastr.success(res.newMember ? 'تم تسجيل العضو والدخول بنجاح' : 'تم تسجيل الدخول للملعب');
+        this.resetForm();
       },
-      error: () => this.toastr.error('فشل في التحقق من العضو')
+      error: () => this.toastr.error('فشل في تسجيل الدخول')
     });
   }
 
   // ✅ إضافة دخول جديد
-  addEntry(MemberName: string, Membership: number, StadeNo: number, Date: string, Time: string) {
-    const newEntry = {
-      MemberName,
-      Membership,
-      StadeNo,
-      Date: this.todayDate,
-      Time: this.timeOnly,
-      controlName: this.controlName
-    };
+  // addEntry(MemberName: string, Membership: number, StadeNo: number, Date: string, Time: string) {
+  //   const newEntry = {
+  //     MemberName,
+  //     Membership,
+  //     StadeNo,
+  //     Date: this.todayDate,
+  //     Time: this.timeOnly,
+  //     controlName: this.controlName
+  //   };
 
-    this.http.post(`${environment.baseUrl}/Stade/addEntry`, newEntry).subscribe({
-      next: () => {
-        this.toastr.success('تم تسجيل الدخول للملعب');
-        this.resetForm();
-      },
-      error: () => {
-        this.toastr.error('فشل في تسجيل دخول الملعب');
-      }
-    });
-  }
+  //   this.http.post(`${environment.baseUrl}/Stade/addEntry`, newEntry).subscribe({
+  //     next: () => {
+  //       this.toastr.success('تم تسجيل الدخول للملعب');
+  //       this.resetForm();
+  //     },
+  //     error: () => {
+  //       this.toastr.error('فشل في تسجيل دخول الملعب');
+  //     }
+  //   });
+  // }
 
-  // ✅ التحقق من وجود العضو
-  checkMemberExists(membership: number) {
-    return this.http.get<boolean>(`${environment.baseUrl}/Member/${membership}`);
-  }
+  // // ✅ التحقق من وجود العضو
+  // checkMemberExists(membership: number) {
+  //   return this.http.get<boolean>(`${environment.baseUrl}/Member/${membership}`);
+  // }
 
   // ✅ إعادة تعيين النموذج
   resetForm() {
