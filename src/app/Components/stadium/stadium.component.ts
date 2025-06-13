@@ -39,11 +39,6 @@ export class StadiumComponent implements OnInit {
     this.resetForm();
   }
 
-  // ✅ التحقق من وجود العضو
-  checkMemberExists(membership: number) {
-    return this.http.get<boolean>(`${environment.baseUrl}/Member/${membership}`);
-  }
-
   // ✅ تسجيل الدخول
   register() {
     const now = new Date();
@@ -96,6 +91,11 @@ export class StadiumComponent implements OnInit {
         this.toastr.error('فشل في تسجيل دخول الملعب');
       }
     });
+  }
+
+  // ✅ التحقق من وجود العضو
+  checkMemberExists(membership: number) {
+    return this.http.get<boolean>(`${environment.baseUrl}/Member/${membership}`);
   }
 
   // ✅ إعادة تعيين النموذج
