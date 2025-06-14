@@ -1,6 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { EntryService } from '../../Services/entry.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-entry-history',
@@ -8,20 +9,24 @@ import { Router } from '@angular/router';
   imports: [CommonModule],
   templateUrl: './entry-history.component.html',
 })
-export class EntryHistoryComponent {
+export class EntryHistoryComponent implements OnInit {
   member: any;
   entries: any[] = [];
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private entryService: EntryService
+  ) {
     const nav = this.router.getCurrentNavigation();
     this.member = nav?.extras?.state?.['member'];
   }
 
   ngOnInit() {
     if (this.member?.id) {
-      // استدعاء الـ API للحصول على سجلات الدخول الخاصة بالعضو
-      // مثال وهمي:
-      // this.api.getEntriesByMemberId(this.member.id).subscribe(res => this.entries = res);
+      this.entryService.getEntriesByMemberId(this.member.id).subscribe({
+        next: (res: any) => this.entries = res,
+        error: (err) => console.error('Error loading entries:', err)
+      });
     }
   }
 }
