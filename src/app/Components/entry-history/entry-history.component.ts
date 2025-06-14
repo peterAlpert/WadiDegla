@@ -24,7 +24,7 @@ export class EntryHistoryComponent implements OnInit {
   ngOnInit() {
     if (this.member?.id) {
       this.entryService.getEntriesByMemberId(this.member.id).subscribe({
-        next: (res: any) => this.entries = res,
+        next: (res: any) => { this.entries = res; console.log(res) },
         error: (err) => console.error('Error loading entries:', err)
       });
     }
