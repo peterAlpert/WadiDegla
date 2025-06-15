@@ -11,6 +11,8 @@ import { EntryLogComponent } from './Components/entry-log/entry-log.component';
 import { EntryHistoryComponent } from './Components/entry-history/entry-history.component';
 import { BookingComponent } from './Components/booking/booking.component';
 import { BookingTodayComponent } from './Components/booking-today/booking-today.component';
+import { LoginComponent } from './Components/login/login.component';
+import { authGuard } from './auth.guard';
 
 
 export const routes: Routes = [
@@ -18,9 +20,10 @@ export const routes: Routes = [
     { path: 'enterStadium', component: StadiumComponent },
     { path: 'violation/:name/:id/:type', component: ViolationDetailsComponent },
     { path: "violation-history", component: ViolationHistoryComponent },
-    { path: 'controlInfo', component: StartComponent },
+    { path: 'controlInfo', component: StartComponent, canActivate: [authGuard] },
     { path: 'injury', component: InjuryComponent },
     { path: 'booking', component: BookingComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'today-bookings', component: BookingTodayComponent },
     { path: 'entry-log', component: EntryLogComponent },
     { path: 'Entry/by-member/:memberId', component: EntryHistoryComponent },
