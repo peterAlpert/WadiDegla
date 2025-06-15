@@ -24,8 +24,10 @@ export class LoginComponent {
 
   login() {
     this._HttpClient.post(`${environment.baseUrl}/auth/login`, {
-      username: this.username,
-      password: this.password
+      Username: this.username,
+      Password: this.password
+
+
     }).subscribe({
       next: (res: any) => {
         localStorage.setItem('token', res.token);
