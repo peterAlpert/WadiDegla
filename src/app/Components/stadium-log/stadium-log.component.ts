@@ -152,7 +152,9 @@ export class StadiumLogComponent implements OnInit {
   }
 
   viewEntryHistory(member: any) {
-    this._Router.navigate([`/Entry/by-member/${member.MemberId}`], { state: { member: member } });
+    console.log(member);
+
+    //this._Router.navigate([`/Entry/by-member/${member.MemberId}`], { state: { member: member } });
   }
 
 }
