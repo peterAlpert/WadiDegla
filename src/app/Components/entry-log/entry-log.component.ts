@@ -50,9 +50,6 @@ export class EntryLogComponent implements OnInit {
       ControlName: this.ControlName
     };
 
-    console.log(entryData);
-
-
     this._EntryService.addEntry(entryData).subscribe({
       next: () => {
         this.toastr.success('تم تسجيل دخول العضو بنجاح');
