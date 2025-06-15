@@ -16,7 +16,7 @@
             <tr *ngFor="let entry of entries; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ entry.date | date: 'yyyy-MM-dd' }}</td>
-                <td>{{ entry.time.subString(0,5)}}</td>
+                <td>{{ entry.time}}</td>
                 <td>{{ entry.stadeNo }}</td>
             </tr>
         </tbody>
