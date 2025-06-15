@@ -1,3 +1,5 @@
+import { BookingService } from './../../Services/booking.service';
+import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -17,6 +19,11 @@ export class BookingComponent implements OnInit {
     timeSlot: '',
     type: 'full'
   };
+
+  constructor(
+    private _ToastrService: ToastrService,
+    private _BookingService: BookingService
+  ) { }
 
   timeSlots: string[] = [];
 
@@ -43,8 +50,14 @@ export class BookingComponent implements OnInit {
   }
 
   submitBooking() {
-    console.log('تم الحجز:', this.booking);
-    // send to API or handle as needed
+    this._BookingService.addBooking(this.booking).subscribe({
+      next: () => {
+        this._ToastrService.success('تم الحجز بنجاح');
+      },
+      error: () => {
+        this._ToastrService.error('حدث خطأ أثناء الحجز');
+      }
+    });
   }
 
 }

@@ -10,6 +10,7 @@ import { ViolationHistoryComponent } from './Components/violation-history/violat
 import { EntryLogComponent } from './Components/entry-log/entry-log.component';
 import { EntryHistoryComponent } from './Components/entry-history/entry-history.component';
 import { BookingComponent } from './Components/booking/booking.component';
+import { BookingTodayComponent } from './Components/booking-today/booking-today.component';
 
 
 export const routes: Routes = [
@@ -20,6 +21,7 @@ export const routes: Routes = [
     { path: 'controlInfo', component: StartComponent },
     { path: 'injury', component: InjuryComponent },
     { path: 'booking', component: BookingComponent },
+    { path: 'today-bookings', component: BookingTodayComponent },
     { path: 'entry-log', component: EntryLogComponent },
     { path: 'Entry/by-member/:memberId', component: EntryHistoryComponent },
     { path: 'stadiumLog', component: StadiumLogComponent },

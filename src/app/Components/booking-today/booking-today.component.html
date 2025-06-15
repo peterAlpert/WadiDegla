@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h4 class="text-center text-success mb-4">🗓️ جدول حجوزات اليوم</h4>
+
+    <!-- 🔍 فلتر حسب رقم الملعب -->
+    <div class="mb-3 text-end">
+        <label class="form-label">فلتر حسب رقم الملعب:</label>
+        <select class="form-select w-auto d-inline-block ms-2" [(ngModel)]="selectedStadium" (change)="applyFilter()">
+            <option [ngValue]="0">الكل</option>
+            <option *ngFor="let n of [1,2,3,4]" [ngValue]="n">ملعب {{n}}</option>
+        </select>
+    </div>
+
+    <!-- 🧾 جدول الحجوزات -->
+    <table class="table table-bordered text-center" dir="rtl" *ngIf="filteredBookings.length > 0">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>الاسم</th>
+                <th>الملعب</th>
+                <th>الوقت</th>
+                <th>نوع الحجز</th>
+                <th>🗑️</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of filteredBookings; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ booking.playerName }}</td>
+                <td>{{ booking.stadiumNo }}</td>
+                <td>{{ booking.timeSlot }}</td>
+                <td>{{ booking.type === 'half' ? 'نص ملعب' : 'ملعب كامل' }}</td>
+                <td>
+                    <button class="btn btn-sm btn-danger" (click)="deleteBooking(booking.id)">حذف</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="filteredBookings.length === 0" class="alert alert-warning text-center">
+        لا توجد حجوزات اليوم لهذا الملعب.
+    </div>
+</div>
