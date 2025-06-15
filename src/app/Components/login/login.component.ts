@@ -24,8 +24,8 @@ export class LoginComponent {
 
   login() {
     this._HttpClient.post(`${environment.baseUrl}/auth/login`, {
-      Username: this.username,
-      Password: this.password
+      username: this.username,
+      password: this.password
 
 
     }).subscribe({
