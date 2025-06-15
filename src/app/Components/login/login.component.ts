@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent {
   ) { }
 
   login() {
-    this._HttpClient.post('https://yourapi.com/api/auth/login', {
+    this._HttpClient.post(`${environment.baseUrl}/auth/login`, {
       username: this.username,
       password: this.password
     }).subscribe({
