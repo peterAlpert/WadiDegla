@@ -28,7 +28,7 @@ export class EntryHistoryComponent implements OnInit {
     this.memberId = this._ActivatedRoute.snapshot.params['memberId'];
     if (this.memberId) {
       this.entryService.getEntriesByMemberId(this.memberId).subscribe({
-        next: (res: any) => { this.entries = res; console.log(res) },
+        next: (res: any) => { this.entries = res.entries;; console.log(res) },
         error: (err) => console.error('Error loading entries:', err)
       });
     }
