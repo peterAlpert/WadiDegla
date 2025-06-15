@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class StartComponent {
   controlName: string = '';
+  touched: boolean = false;
 
   constructor(
     private _ToastrService: ToastrService,

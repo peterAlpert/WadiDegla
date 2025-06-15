@@ -1,9 +1,15 @@
 <div class="container py-4">
-    <h3 class="text-center mb-4">
-        سجل دخول للعضو: <span class="fs-1 text-warning">{{ member?.memberName }} </span>رقم عضويه <span
-            class="fs-1 text-warning">{{ member?.membership
-            }}</span>
-    </h3>
+    <div class="text-center mb-5">
+        <h3 class="mb-3 text-primary fw-bold">سجل دخول العضو</h3>
+        <div class="d-flex flex-column align-items-center">
+            <div class="fs-4">
+                👤 الاسم: <span class="text-warning fw-bold">{{ member?.memberName }}</span>
+            </div>
+            <div class="fs-4 mt-2">
+                🆔 رقم العضوية: <span class="text-warning fw-bold">{{ member?.membership }}</span>
+            </div>
+        </div>
+    </div>
 
     <table class="table table-bordered text-center" dir="rtl">
         <thead class="table-dark">
@@ -16,15 +22,4 @@
         </thead>
         <tbody>
             <tr *ngFor="let entry of entries; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ entry.date | date: 'yyyy-MM-dd' }}</td>
-                <td>{{ entry.time.slice(0, 5)}}</td>
-                <td>{{ entry.stadeNo }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div *ngIf="entries.length === 0" class="alert alert-warning text-center">
-        لا توجد سجلات دخول لهذا العضو
-    </div>
-</div>
+                <td>{{ i + 1 }}
