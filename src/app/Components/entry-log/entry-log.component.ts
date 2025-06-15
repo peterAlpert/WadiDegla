@@ -17,6 +17,8 @@ export class EntryLogComponent implements OnInit {
   StadeNo: number = 1;
   Date: string = '';
   Time: string = '';
+  memNam: string = '';
+  memShip: number = 0;
   ControlName: any;
 
   constructor(
@@ -28,9 +30,12 @@ export class EntryLogComponent implements OnInit {
 
   ngOnInit(): void {
     this.ControlName = localStorage.getItem('controlName');
+
     const nav = history.state;
     if (nav && nav.member) {
       this.member = nav.member;
+      this.memNam = nav.member.MemberName;
+      this.memShip = nav.member.Membership;
 
       const now = new Date();
       this.Date = now.toISOString().split('T')[0]; // yyyy-mm-dd
@@ -42,8 +47,8 @@ export class EntryLogComponent implements OnInit {
 
   submitEntry() {
     const entryData = {
-      MemberName: this.member?.MemberName,
-      Membership: this.member?.Membership,
+      MemberName: this.memNam,
+      Membership: this.memShip,
       StadeNo: this.StadeNo,
       Date: this.Date,
       Time: this.Time,
