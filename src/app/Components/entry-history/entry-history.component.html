@@ -22,4 +22,15 @@
         </thead>
         <tbody>
             <tr *ngFor="let entry of entries; let i = index">
-                <td>{{ i + 1 }}
+                <td>{{ i + 1 }}</td>
+                <td>{{ entry.date | date: 'yyyy-MM-dd' }}</td>
+                <td>{{ entry.time.slice(0, 5) }}</td>
+                <td>{{ entry.stadeNo }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="entries.length === 0" class="alert alert-warning text-center">
+        لا توجد سجلات دخول لهذا العضو
+    </div>
+</div>
