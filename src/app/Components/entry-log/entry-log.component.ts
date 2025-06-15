@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { StadiumService } from './../../Services/stadium.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
+import { EntryService } from '../../Services/entry.service';
 
 @Component({
   selector: 'app-entry-log',
@@ -21,7 +22,7 @@ export class EntryLogComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private stadiumService: StadiumService,
+    private _EntryService: EntryService,
     private toastr: ToastrService
   ) { }
 
@@ -52,14 +53,14 @@ export class EntryLogComponent implements OnInit {
     console.log(entryData);
 
 
-    // this.stadiumService.addEntry(entryData).subscribe({
-    //   next: () => {
-    //     this.toastr.success('تم تسجيل دخول العضو بنجاح');
-    //     this.router.navigate(['/stadium-log']);
-    //   },
-    //   error: () => {
-    //     this.toastr.error('حدث خطأ أثناء التسجيل');
-    //   }
-    // });
+    this._EntryService.addEntry(entryData).subscribe({
+      next: () => {
+        this.toastr.success('تم تسجيل دخول العضو بنجاح');
+        this.router.navigate(['/stadium-log']);
+      },
+      error: () => {
+        this.toastr.error('حدث خطأ أثناء التسجيل');
+      }
+    });
   }
 }
