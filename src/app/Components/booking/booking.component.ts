@@ -21,11 +21,17 @@ export class BookingComponent implements OnInit {
   timeSlots: string[] = [];
 
   ngOnInit(): void {
+    this.setTodayDate();
     this.generateTimeSlots();
   }
 
+  setTodayDate() {
+    const today = new Date();
+    this.booking.date = today.toISOString().split('T')[0]; // yyyy-mm-dd
+  }
+
   generateTimeSlots() {
-    const start = 16 * 60; // 4:00 مساءً = 16:00
+    const start = 16 * 60; // 4:00 مساءً
     const end = 23 * 60 + 30; // 11:30 مساءً
     for (let mins = start; mins <= end; mins += 30) {
       const hours = Math.floor(mins / 60);
@@ -38,7 +44,7 @@ export class BookingComponent implements OnInit {
 
   submitBooking() {
     console.log('تم الحجز:', this.booking);
-    // هنا تقدر تبعت البيانات لـ API لو عندك
+    // send to API or handle as needed
   }
 
 }

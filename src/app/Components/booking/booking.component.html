@@ -18,11 +18,6 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">التاريخ</label>
-            <input type="date" class="form-control" [(ngModel)]="booking.date" name="date" required />
-        </div>
-
-        <div class="mb-3">
             <label class="form-label">الساعة</label>
             <select class="form-select" [(ngModel)]="booking.timeSlot" name="timeSlot" required>
                 <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
