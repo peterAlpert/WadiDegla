@@ -60,7 +60,7 @@ export class EntryLogComponent implements OnInit {
     this._EntryService.addEntry(entryData).subscribe({
       next: () => {
         this.toastr.success('تم تسجيل دخول العضو بنجاح');
-        this.router.navigate(['/stadium-log']);
+        this.router.navigate(['/stadiumLog']);
       },
       error: () => {
         this.toastr.error('حدث خطأ أثناء التسجيل');
