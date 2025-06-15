@@ -42,13 +42,15 @@ export class EntryLogComponent implements OnInit {
 
   submitEntry() {
     const entryData = {
-      MemberName: this.member.MemberName,
-      Membership: this.member.Membership,
+      MemberName: this.member?.MemberName,
+      Membership: this.member?.Membership,
       StadeNo: this.StadeNo,
       Date: this.Date,
       Time: this.Time,
       ControlName: this.ControlName
     };
+
+    console.log(entryData);
 
     this._EntryService.addEntry(entryData).subscribe({
       next: () => {
