@@ -49,14 +49,17 @@ export class EntryLogComponent implements OnInit {
       ControlName: this.ControlName
     };
 
-    this.stadiumService.addEntry(entryData).subscribe({
-      next: () => {
-        this.toastr.success('تم تسجيل دخول العضو بنجاح');
-        this.router.navigate(['/stadium-log']);
-      },
-      error: () => {
-        this.toastr.error('حدث خطأ أثناء التسجيل');
-      }
-    });
+    console.log(entryData);
+
+
+    // this.stadiumService.addEntry(entryData).subscribe({
+    //   next: () => {
+    //     this.toastr.success('تم تسجيل دخول العضو بنجاح');
+    //     this.router.navigate(['/stadium-log']);
+    //   },
+    //   error: () => {
+    //     this.toastr.error('حدث خطأ أثناء التسجيل');
+    //   }
+    // });
   }
 }

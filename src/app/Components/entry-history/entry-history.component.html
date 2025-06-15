@@ -1,7 +1,8 @@
 <div class="container py-4">
     <h3 class="text-center mb-4">
-        سجل دخول للعضو: <span class="fs-2 text-warning">{{ member?.memberName }} رقم عضويه ({{ member?.membership
-            }})</span>
+        سجل دخول للعضو: <span class="fs-1 text-warning">{{ member?.memberName }} </span>رقم عضويه <span
+            class="fs-1 text-warning">{{ member?.membership
+            }}</span>
     </h3>
 
     <table class="table table-bordered text-center" dir="rtl">
@@ -17,7 +18,7 @@
             <tr *ngFor="let entry of entries; let i = index">
                 <td>{{ i + 1 }}</td>
                 <td>{{ entry.date | date: 'yyyy-MM-dd' }}</td>
-                <td>{{ entry.time}}</td>
+                <td>{{ entry.time.slice(0, 5)}}</td>
                 <td>{{ entry.stadeNo }}</td>
             </tr>
         </tbody>
