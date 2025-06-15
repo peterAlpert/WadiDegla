@@ -10,6 +10,6 @@ export class EntryService {
   constructor(private http: HttpClient) { }
 
   getEntriesByMemberId(memberId: number) {
-    return this.http.get(`${environment.baseUrl}/by-member/${memberId}`);
+    return this.http.get(`${environment.baseUrl}/Entry/by-member/${memberId}`);
   }
 }
