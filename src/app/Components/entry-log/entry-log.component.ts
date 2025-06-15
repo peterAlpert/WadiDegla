@@ -34,12 +34,12 @@ export class EntryLogComponent implements OnInit {
     const nav = history.state;
     if (nav && nav.member) {
       this.member = nav.member;
-      this.memNam = nav.member.MemberName;
-      this.memShip = nav.member.Membership;
+      this.memNam = nav.member.memberName || nav.member.MemberName;
+      this.memShip = nav.member.membership || nav.member.Membership;
 
       const now = new Date();
       this.Date = now.toISOString().split('T')[0]; // yyyy-mm-dd
-      this.Time = now.toTimeString().split(' ')[0].slice(0, 5); // hh:mm
+      this.Time = now.toLocaleTimeString('en-GB', { hour12: false });
     } else {
       this.router.navigate(['/']); // رجوع في حالة عدم وجود بيانات
     }
