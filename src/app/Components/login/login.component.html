@@ -1,16 +1,14 @@
-<div class="container py-2 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<div class="container py-1 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
         <h3 class="text-center mb-4 text-primary fw-bold">تسجيل الدخول</h3>
 
         <form (ngSubmit)="login()" dir="rtl">
             <div class="mb-3">
-                <label class="form-label fw-bold">اسم المستخدم</label>
                 <input [(ngModel)]="username" name="username" class="form-control text-end" required
                     placeholder="ادخل اسم المستخدم" />
             </div>
 
             <div class="mb-4">
-                <label class="form-label fw-bold">كلمة المرور</label>
                 <input [(ngModel)]="password" name="password" type="password" class="form-control text-end" required
                     placeholder="ادخل كلمة المرور" />
             </div>
