@@ -1,0 +1,42 @@
+<div class="container py-4" dir="rtl">
+    <h3 class="text-center mb-4 text-success">🔒 صفحة حجز الملعب</h3>
+
+    <form (ngSubmit)="submitBooking()" #bookingForm="ngForm">
+        <div class="mb-3">
+            <label class="form-label">اسم اللاعب</label>
+            <input type="text" class="form-control" [(ngModel)]="booking.playerName" name="playerName" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">رقم الملعب</label>
+            <select class="form-select" [(ngModel)]="booking.stadiumNo" name="stadiumNo" required>
+                <option [ngValue]="1">ملعب 1</option>
+                <option [ngValue]="2">ملعب 2</option>
+                <option [ngValue]="3">ملعب 3</option>
+                <option [ngValue]="4">ملعب 4</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">التاريخ</label>
+            <input type="date" class="form-control" [(ngModel)]="booking.date" name="date" required />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">الساعة</label>
+            <select class="form-select" [(ngModel)]="booking.timeSlot" name="timeSlot" required>
+                <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">نوع الحجز</label>
+            <select class="form-select" [(ngModel)]="booking.type" name="type" required>
+                <option value="half">نص ملعب</option>
+                <option value="full">ملعب كامل</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-3">تأكيد الحجز</button>
+    </form>
+</div>

@@ -9,6 +9,7 @@ import { ViolationDetailsComponent } from './Components/violation-details/violat
 import { ViolationHistoryComponent } from './Components/violation-history/violation-history.component';
 import { EntryLogComponent } from './Components/entry-log/entry-log.component';
 import { EntryHistoryComponent } from './Components/entry-history/entry-history.component';
+import { BookingComponent } from './Components/booking/booking.component';
 
 
 export const routes: Routes = [
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: "violation-history", component: ViolationHistoryComponent },
     { path: 'controlInfo', component: StartComponent },
     { path: 'injury', component: InjuryComponent },
+    { path: 'booking', component: BookingComponent },
     { path: 'entry-log', component: EntryLogComponent },
     { path: 'Entry/by-member/:memberId', component: EntryHistoryComponent },
     { path: 'stadiumLog', component: StadiumLogComponent },
