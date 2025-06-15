@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class EntryHistoryComponent implements OnInit {
   member: any;
-  memberId: string = '';
+  memberId: number = 0;
   entries: any[] = [];
 
   constructor(
@@ -27,7 +27,7 @@ export class EntryHistoryComponent implements OnInit {
   ngOnInit() {
     this.memberId = this._ActivatedRoute.snapshot.params['memberId'];
     if (this.memberId) {
-      this.entryService.getEntriesByMemberId(this.member.id).subscribe({
+      this.entryService.getEntriesByMemberId(this.memberId).subscribe({
         next: (res: any) => { this.entries = res; console.log(res) },
         error: (err) => console.error('Error loading entries:', err)
       });
