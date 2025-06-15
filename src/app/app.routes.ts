@@ -19,7 +19,7 @@ export const routes: Routes = [
     { path: 'controlInfo', component: StartComponent },
     { path: 'injury', component: InjuryComponent },
     { path: 'entry-log', component: EntryLogComponent },
-    { path: 'entry-history', component: EntryHistoryComponent },
+    { path: 'Entry/by-member/:memberId', component: EntryHistoryComponent },
     { path: 'stadiumLog', component: StadiumLogComponent },
     { path: '**', component: NotFoundComponent }
 
