@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { BookingService } from './../../Services/booking.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
@@ -22,6 +23,7 @@ export class BookingComponent implements OnInit {
 
   constructor(
     private _ToastrService: ToastrService,
+    private _Router: Router,
     private _BookingService: BookingService
   ) { }
 
@@ -58,6 +60,10 @@ export class BookingComponent implements OnInit {
         this._ToastrService.error('حدث خطأ أثناء الحجز');
       }
     });
+  }
+
+  goToBookingToday() {
+    this._Router.navigate(['/today-bookings']);
   }
 
 }
