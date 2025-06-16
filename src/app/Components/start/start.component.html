@@ -6,7 +6,7 @@
 
             <div class="mb-4">
                 <label for="controlName" class="form-label fw-bold">اسم الكنترول</label>
-                <input id="controlName" (ngModelChange)="touched = true" type="text" [(ngModel)]="controlName"
+                <input id="controlName" required (ngModelChange)="touched = true" type="text" [(ngModel)]="controlName"
                     class="form-control text-end" name="name" placeholder="مثال: محمد عبد الله" />
             </div>
             <div *ngIf="touched && !controlName.trim().length" class="text-danger small mt-1">
