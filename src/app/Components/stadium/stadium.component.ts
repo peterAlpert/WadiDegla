@@ -100,6 +100,9 @@ export class StadiumComponent implements OnInit {
       controlName: this.controlName
     };
   }
+  relod() {
+    window.location.reload();
+  }
 
   // ✅ صلاحية النموذج
   isFormValid(): boolean {
