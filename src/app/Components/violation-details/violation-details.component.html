@@ -1,9 +1,14 @@
 <div class="container py-4 text-end" dir="rtl">
-    <h4 class="text-center mb-4">تفاصيل مخالفة العضو <span class="text-warning fw-bolder">{{ memberName }}</span></h4>
 
-    <div class="mb-3">
-        <label class="form-label">رقم العضوية:</label>
-        <div class="form-control bg-light">{{ membership }}</div>
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center">
+            <h4 class="text-center mb-4">تفاصيل مخالفة العضو <span class="text-warning fw-bolder">{{ memberName
+                    }}</span></h4>
+            <p class="card-text fs-5 mt-3">
+                👤 <strong>{{ member?.memberName }}</strong><br />
+                عضوية رقم: <strong>{{ member?.membership }}</strong>
+            </p>
+        </div>
     </div>
 
     <div class="mb-3">

@@ -1,13 +1,11 @@
 <div class="container py-4">
-    <div class="text-center mb-5">
-        <h3 class="mb-3 text-primary fw-bold">سجل دخول العضو</h3>
-        <div class="d-flex flex-column align-items-center">
-            <div class="fs-4">
-                👤 الاسم: <span class="text-warning fw-bold">{{ member?.memberName }}</span>
-            </div>
-            <div class="fs-4 mt-2">
-                🆔 رقم العضوية: <span class="text-warning fw-bold">{{ member?.membership }}</span>
-            </div>
+    <div class="card shadow-sm mb-4">
+        <div class="card-body text-center">
+            <h4 class="card-title text-primary">تسجيل دخول عضو</h4>
+            <p class="card-text fs-5 mt-3">
+                👤 <strong>{{ member?.memberName }}</strong><br />
+                عضوية رقم: <strong>{{ member?.membership }}</strong>
+            </p>
         </div>
     </div>
 

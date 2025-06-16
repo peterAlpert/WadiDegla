@@ -65,15 +65,14 @@
                     <td>{{ item.memberName }}</td>
                     <td>{{ item.membership }}</td>
 
-                    <!-- زر واحد بدلاً من الملعب والوقت والتاريخ -->
                     <td>
-                        <button class="btn btn-outline-primary btn-sm w-100" (click)="viewEntryHistory(item)">
+                        <button class="btn btn-outline-warning btn-sm w-100" (click)="viewEntryHistory(item)">
                             السجل
                         </button>
                     </td>
 
                     <td>
-                        <button class="btn btn-sm btn-outline-primary" (click)="goToEntryPage(item)">تسجيل دخول</button>
+                        <button class="btn btn-sm btn-outline-warning" (click)="goToEntryPage(item)">تسجيل دخول</button>
                     </td>
                     <td>
                         <button class="btn btn-outline-dark btn-sm position-relative" (click)="insult(item)">
