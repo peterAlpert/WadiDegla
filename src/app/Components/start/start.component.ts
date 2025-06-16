@@ -28,8 +28,9 @@ export class StartComponent {
     if (trimmedName) {
       localStorage.setItem('controlName', trimmedName);
       this._ToastrService.success("تم تسجيل الاسم بنجاح");
-      this._router.navigate(['/enterStadium']);
       window.location.reload();
+      this._router.navigate(['/enterStadium']);
+
     } else {
       this._ToastrService.error("من فضلك ادخل الاسم");
     }
