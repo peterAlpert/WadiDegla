@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ViolationService } from '../../Services/violation.service';
 
 @Component({
   selector: 'app-violation-details',
@@ -13,19 +14,39 @@ import { FormsModule } from '@angular/forms';
 })
 export class ViolationDetailsComponent {
   player: any;
-  violationType = '';
-  notes = '';
+  violationType: string = '';
+  notes: string = '';
+  date = new Date().toISOString();
   violationReport = '';
 
   constructor(
-    private route: ActivatedRoute,
     private location: Location,
+    private violationService: ViolationService,
     private toastr: ToastrService
   ) {
     const nav = this.location.getState() as any;
     this.player = nav.player;
-    this.violationType = nav.violationType || 'مخالفة';
   }
+
+
+  submitViolation() {
+    const payload = {
+      memberId: this.player.id,
+      type: this.violationType,
+      notes: this.notes,
+      date: this.date
+    };
+
+    this.violationService.saveViolation(payload).subscribe({
+      next: () => this.toastr.success('تم تسجيل المخالفة ✅'),
+      error: () => this.toastr.error('حدث خطأ أثناء التسجيل ❌')
+    });
+  }
+
+  isFormInvalid(): boolean {
+    return !this.violationType || !this.notes;
+  }
+
 
   generateViolationReport() {
     const now = new Date();

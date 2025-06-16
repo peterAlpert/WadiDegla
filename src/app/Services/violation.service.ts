@@ -14,7 +14,7 @@ export class ViolationService {
     return this.http.post(`${environment.baseUrl}/Violation/add`, violation);
   }
 
-  getMemberViolations(member: Iplayer): Observable<IViolation[]> {
-    return this.http.get<IViolation[]>(`${environment.baseUrl}/history?name=${member.memberName}`);
+  getMemberViolations(memberId: number): Observable<IViolation[]> {
+    return this.http.get<IViolation[]>(`${environment.baseUrl}/Violation/get-by-member/${memberId}`);
   }
 }

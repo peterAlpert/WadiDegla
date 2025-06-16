@@ -22,7 +22,7 @@ export class ViolationHistoryComponent implements OnInit {
     this.member = nav?.extras?.state?.['member'];
 
     if (this.member) {
-      this.violationService.getMemberViolations(this.member).subscribe({
+      this.violationService.getMemberViolations(this.member.id).subscribe({
         next: (res: IViolation[]) => this.violations = res,
         error: (err) => console.error('Error fetching violations:', err)
       });

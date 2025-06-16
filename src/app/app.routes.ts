@@ -18,7 +18,8 @@ import { authGuard } from './auth.guard';
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'controlInfo' },
     { path: 'enterStadium', component: StadiumComponent },
-    { path: 'violation/:name/:id/:type', component: ViolationDetailsComponent },
+    { path: 'violation-details', component: ViolationDetailsComponent },
+    // { path: 'violation/:name/:id/:type', component: ViolationDetailsComponent },
     { path: "violation-history", component: ViolationHistoryComponent },
     // { path: 'controlInfo', component: StartComponent, canActivate: [authGuard] },
     { path: 'controlInfo', component: StartComponent },
