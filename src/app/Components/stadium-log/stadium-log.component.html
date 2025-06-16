@@ -74,7 +74,7 @@
                     <td>
                         <button class="btn btn-sm btn-outline-warning" (click)="goToEntryPage(item)">تسجيل دخول</button>
                     </td>
-                    <td>
+                    <!-- <td>
                         <button class="btn btn-outline-dark btn-sm position-relative" (click)="insult(item)">
                             تلفظ
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill"
@@ -115,7 +115,11 @@
                             </span>
                         </button>
 
-                    </td>
+                    </td> -->
+                    <button class="btn btn-danger btn-sm" (click)="goToViolationPage(item, 'تلفظ')">تلفظ</button>
+                    <button class="btn btn-danger btn-sm" (click)="goToViolationPage(item, 'هزار')">هزار</button>
+                    <button class="btn btn-danger btn-sm" (click)="goToViolationPage(item, 'مشادة')">مشادة</button>
+
                     <td>
                         <button class="btn btn-danger btn-sm" (click)="goToInjuryPage(item)">
                             إصابة

@@ -157,4 +157,11 @@ export class StadiumLogComponent implements OnInit {
     this._Router.navigate([`/Entry/by-member/${member.firstEntry.memberId}`], { state: { member: member } });
   }
 
+  goToViolationPage(player: any, violationType: string) {
+    this._Router.navigate(['/violation-details'], {
+      state: { player, violationType }
+    });
+  }
+
+
 }

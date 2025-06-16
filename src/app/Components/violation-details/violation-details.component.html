@@ -1,23 +1,42 @@
-<div class="container py-4 text-end" dir="rtl">
+<div class="container py-4" dir="rtl">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8 bg-light rounded shadow p-4">
 
-    <div class="card shadow-sm mb-4">
-        <div class="card-body text-center">
-            <h4 class="text-center mb-4">تفاصيل مخالفة العضو <span class="text-warning fw-bolder">{{ memberName
-                    }}</span></h4>
-            <p class="card-text fs-5 mt-3">
-                👤 <strong>{{ member?.memberName }}</strong><br />
-                عضوية رقم: <strong>{{ member?.membership }}</strong>
-            </p>
+            <h3 class="text-center text-danger mb-4">تسجيل {{ violationType }}</h3>
+
+            <div class="mb-3 text-end">
+                <strong>اسم العضو:</strong> {{ player.memberName }}
+            </div>
+            <div class="mb-3 text-end">
+                <strong>رقم العضوية:</strong> {{ player.membership }}
+            </div>
+            <div class="mb-4 text-end">
+                <strong>رقم الملعب:</strong> {{ player.stadeNo }}
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">تفاصيل {{ violationType }}</label>
+                <textarea class="form-control text-end" rows="3" [(ngModel)]="notes"
+                    placeholder="اكتب ملاحظات عن {{ violationType }}"></textarea>
+            </div>
+
+            <div class="text-center mb-3">
+                <button class="btn btn-danger w-50" (click)="generateViolationReport()" [disabled]="!notes.trim()">
+                    إنشاء التقرير
+                </button>
+            </div>
+
+            <div *ngIf="violationReport">
+                <div class="alert alert-info text-end">
+                    <pre class="mb-0" style="white-space: pre-wrap" #reportBox>{{ violationReport }}</pre>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-outline-dark" (click)="copyToClipboard(reportBox.innerText)">نسخ
+                        التقرير</button>
+                </div>
+            </div>
+
         </div>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">ملاحظات:</label>
-        <textarea [(ngModel)]="note" class="form-control" rows="3"></textarea>
-    </div>
-    <div class="d-flex justify-content-center gap-2 mt-4">
-        <button class="btn btn-outline-danger" (click)="saveViolation('insult')">حفظ تلفظ</button>
-        <button class="btn btn-outline-warning" (click)="saveViolation('joke')">حفظ هزار</button>
-        <button class="btn btn-outline-primary" (click)="saveViolation('fight')">حفظ مشادة</button>
     </div>
 </div>
