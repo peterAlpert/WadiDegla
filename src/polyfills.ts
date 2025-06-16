@@ -19,3 +19,13 @@ import 'classlist.js'; // لبعض التوافقات مع DOM
 import 'web-animations-js'; // لو بتستخدم animations
 
 import 'zone.js'; // مهم جدًا لـ Angular
+
+/** IE9, IE10 and IE11 support */
+import 'classlist.js';  // Run `npm install --save classlist.js`
+
+/** Evergreen browsers require these. **/
+import 'core-js/es/reflect'; // Run `npm install core-js`
+
+/** For older browsers (iOS 9-12 Safari, Android < 5) */
+import 'zone.js'; // Included with Angular CLI.
+
