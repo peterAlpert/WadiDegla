@@ -89,7 +89,7 @@ export class EntryHistoryComponent implements OnInit {
   }
 
   filterByStadium(no: number) {
-    this.filteredData = this.allData.filter(x => x.stadeNo == no);
+    this.entries = this.entries.filter(x => x.stadeNo == no);
   }
 
   showAll() {
