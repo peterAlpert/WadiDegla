@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8 bg-light rounded shadow p-4">
 
-            <h3 class="text-center text-danger mb-4">تسجيل {{ violationType }}</h3>
+            <h3 class="text-center text-danger mb-4">تسجيل مخالفه</h3>
 
             <div class="mb-3 text-end">
                 <strong>اسم العضو:</strong> {{ player.memberName }}
@@ -13,16 +13,30 @@
             <div class="mb-4 text-end">
                 <strong>رقم الملعب:</strong> {{ player.stadeNo }}
             </div>
+            <div class="mb-3">
+                <label class="form-label fw-bold text-end w-100">نوع المخالفة</label>
+                <select class="form-select text-end" [(ngModel)]="violationType">
+                    <option value="" disabled selected>اختر نوع المخالفة</option>
+                    <option>تلفظ</option>
+                    <option>هزار</option>
+                    <option>مشادة</option>
+                </select>
+            </div>
 
             <div class="mb-4">
-                <label class="form-label fw-bold">تفاصيل {{ violationType }}</label>
+                <label class="form-label fw-bold">تفاصيل المخالفه</label>
                 <textarea class="form-control text-end" rows="3" [(ngModel)]="notes"
                     placeholder="اكتب ملاحظات عن {{ violationType }}"></textarea>
             </div>
 
             <div class="text-center mb-3">
-                <button class="btn btn-danger w-50" (click)="generateViolationReport()" [disabled]="!notes.trim()">
+                <button class="btn btn-danger w-50" (click)="generateViolationReport()"
+                    [disabled]="!notes.trim() || !violationType">
                     إنشاء التقرير
+                </button>
+                <button class="btn btn-danger w-50" (click)="submitViolation()"
+                    [disabled]="!notes.trim() || !violationType">
+                    حفظ التقرير
                 </button>
             </div>
 

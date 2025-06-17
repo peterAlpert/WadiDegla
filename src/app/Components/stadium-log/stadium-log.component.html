@@ -53,9 +53,9 @@
                     <th>العضوية</th>
                     <th>السجل</th>
                     <th>تسجيل جديد</th>
-                    <th>تلفظ</th>
-                    <th>هزار</th>
-                    <th>تشاجر</th>
+                    <th>مخالفه</th>
+                    <!-- <th>هزار</th>
+                    <th>تشاجر</th> -->
                     <th>اصابه</th>
                 </tr>
             </thead>
@@ -116,12 +116,13 @@
                         </button>
 
                     </td> -->
-                    <td><button class="btn btn-danger btn-sm" (click)="goToViolationPage(item, 'تلفظ')">تلفظ</button>
+                    <td><button class="btn btn-info btn-sm" (click)="goToViolationPage(item, 'تلفظ')">تسجيل
+                            مخالفه</button>
                     </td>
-                    <td><button class="btn btn-danger btn-sm" (click)="goToViolationPage(item, 'هزار')">هزار</button>
+                    <!-- <td><button class="btn btn-danger btn-sm" (click)="goToViolationPage(item, 'هزار')">هزار</button>
                     </td>
                     <td><button class="btn btn-danger btn-sm" (click)="goToViolationPage(item, 'مشادة')">مشادة</button>
-                    </td>
+                    </td> -->
 
                     <td>
                         <button class="btn btn-danger btn-sm" (click)="goToInjuryPage(item)">
