@@ -30,5 +30,12 @@ export class StadiumService {
     return this.http.post(`${this.baseUrl}/add-fight/${id}`, {});
   }
 
+  checkIfEnteredToday(membership: number) {
+    return this.http.get<boolean>(`${environment.baseUrl}/Entry/HasEnteredToday/${membership}`);
+  }
+
+  registerEntry(entry: any) {
+    return this.http.post(`${environment.baseUrl}/Entry/register-entry`, entry);
+  }
 
 }

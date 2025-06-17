@@ -1,3 +1,4 @@
+import { StadiumService } from './../../Services/stadium.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
@@ -27,7 +28,10 @@ export class StadiumComponent implements OnInit {
     stadeNo: 1
   };
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(
+    private http: HttpClient,
+    private _StadiumService: StadiumService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     const name = localStorage.getItem('controlName');
@@ -40,27 +44,65 @@ export class StadiumComponent implements OnInit {
   }
 
   register() {
-    const now = new Date();
-    this.timeOnly = now.toTimeString().slice(0, 5);
-    const dateOnly = now.toISOString().split('T')[0];
+    const { memberName, membership, stadeNo } = this.member;
 
-    const dto = {
-      MemberName: this.member.memberName,
-      Membership: this.member.membership,
-      StadeNo: this.member.stadeNo,
-      Date: dateOnly,
-      Time: this.timeOnly,
-      ControlName: this.controlName
-    };
-
-    this.http.post(`${environment.baseUrl}/Entry/register-entry`, dto).subscribe({
-      next: (res: any) => {
-        this.toastr.success(res.newMember ? 'تم تسجيل العضو والدخول بنجاح' : 'تم تسجيل الدخول للملعب');
-        this.resetForm();
+    this._StadiumService.checkIfEnteredToday(membership).subscribe({
+      next: (hasEntered) => {
+        if (hasEntered) {
+          this.toastr.warning(`العضو ${memberName} (رقم العضوية: ${membership}) سجل دخول اليوم بالفعل`);
+        } else {
+          // تابع التسجيل
+          this.saveEntry();
+        }
       },
-      error: () => this.toastr.error('فشل في تسجيل الدخول')
+      error: () => {
+        this.toastr.error("حدث خطأ أثناء التحقق من الدخول السابق");
+      }
     });
   }
+
+  saveEntry() {
+    const now = new Date();
+    const timeOnly = now.toTimeString().slice(0, 5);
+    const dateOnly = now.toISOString().split('T')[0];
+
+    const payload = {
+      memberName: this.member.memberName,
+      membership: this.member.membership,
+      stadeNo: this.member.stadeNo,
+      date: dateOnly,
+      time: timeOnly
+    };
+
+    this._StadiumService.registerEntry(payload).subscribe({
+      next: () => this.toastr.success("تم تسجيل الدخول ✅"),
+      error: () => this.toastr.error("فشل تسجيل الدخول ❌")
+    });
+  }
+
+
+  // register() {
+  //   const now = new Date();
+  //   this.timeOnly = now.toTimeString().slice(0, 5);
+  //   const dateOnly = now.toISOString().split('T')[0];
+
+  //   const dto = {
+  //     MemberName: this.member.memberName,
+  //     Membership: this.member.membership,
+  //     StadeNo: this.member.stadeNo,
+  //     Date: dateOnly,
+  //     Time: this.timeOnly,
+  //     ControlName: this.controlName
+  //   };
+
+  //   this.http.post(`${environment.baseUrl}/Entry/register-entry`, dto).subscribe({
+  //     next: (res: any) => {
+  //       this.toastr.success(res.newMember ? 'تم تسجيل العضو والدخول بنجاح' : 'تم تسجيل الدخول للملعب');
+  //       this.resetForm();
+  //     },
+  //     error: () => this.toastr.error('فشل في تسجيل الدخول')
+  //   });
+  // }
 
   // ✅ إضافة دخول جديد
   // addEntry(MemberName: string, Membership: number, StadeNo: number, Date: string, Time: string) {
