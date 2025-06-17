@@ -40,6 +40,9 @@ export class ViolationDetailsComponent {
       Time: this.time
     };
 
+    console.log(payload);
+
+
     this.violationService.saveViolation(payload).subscribe({
       next: () => this.toastr.success('تم تسجيل المخالفة ✅'),
       error: () => this.toastr.error('حدث خطأ أثناء التسجيل ❌')
