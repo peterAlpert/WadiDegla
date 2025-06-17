@@ -82,6 +82,7 @@
                     <th>نوع الإصابة</th>
                     <th>مكانها</th>
                     <th>الإجراء</th>
+                    <th>ملعب</th>
                     <th>التاريخ</th>
                 </tr>
             </thead>
@@ -91,6 +92,7 @@
                     <td>{{ injury.type }}</td>
                     <td>{{ injury.location }}</td>
                     <td>{{ injury.actionTaken }}</td>
+                    <td>{{ injury.stadeNo }}</td>
                     <td>{{ injury.date | date: 'yyyy-MM-dd' }}</td>
                 </tr>
             </tbody>
