@@ -12,6 +12,6 @@ export class InjuryService {
   }
 
   getByMemberId(memberId: number) {
-    return this.http.get(`${environment.baseUrl}/Injuries/GetByMemberId/${memberId}`);
+    return this.http.get(`${environment.baseUrl}/Injuries/get-by-member/${memberId}`);
   }
 }
