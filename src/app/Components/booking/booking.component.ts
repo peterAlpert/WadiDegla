@@ -41,15 +41,23 @@ export class BookingComponent implements OnInit {
 
   generateTimeSlots() {
     const start = 16 * 60; // 4:00 مساءً
-    const end = 23 * 60 + 30; // 11:30 مساءً
+    const end = 23 * 60;   // 11:00 مساءً (بدل 11:30)
+    this.timeSlots = [];
+
     for (let mins = start; mins <= end; mins += 30) {
-      const hours = Math.floor(mins / 60);
+      const hours24 = Math.floor(mins / 60);
       const minutes = mins % 60;
-      this.timeSlots.push(
-        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
-      );
+
+      // تحويل للـ 12 ساعة
+      const period = hours24 >= 12 ? 'PM' : 'AM';
+      let hours12 = hours24 % 12;
+      if (hours12 === 0) hours12 = 12;
+
+      const timeString = `${hours12}:${minutes.toString().padStart(2, '0')} ${period}`;
+      this.timeSlots.push(timeString);
     }
   }
+
 
   submitBooking() {
     this._BookingService.addBooking(this.booking).subscribe({
