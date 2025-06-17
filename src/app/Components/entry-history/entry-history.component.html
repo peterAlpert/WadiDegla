@@ -91,9 +91,9 @@
                     <td>{{ i + 1 }}</td>
                     <td>{{ injury.type }}</td>
                     <td>{{ injury.location }}</td>
-                    <td>{{ injury.action }}</td>
+                    <td>{{ injury.actionTaken }}</td>
+                    <td>{{ injury.firstEntry.stadeNo }}</td>
                     <td>{{ injury.date | date: 'yyyy-MM-dd' }}</td>
-                    <td>{{ injury.time.slice(0, 5) }}</td>
                 </tr>
             </tbody>
         </table>
