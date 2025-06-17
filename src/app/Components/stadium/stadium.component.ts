@@ -67,11 +67,12 @@ export class StadiumComponent implements OnInit {
     const dateOnly = now.toISOString().split('T')[0];
 
     const payload = {
-      memberName: this.member.memberName,
-      membership: this.member.membership,
-      stadeNo: this.member.stadeNo,
-      date: dateOnly,
-      time: timeOnly
+      MemberName: this.member.memberName,
+      Membership: this.member.membership,
+      StadeNo: this.member.stadeNo,
+      Date: dateOnly,
+      Time: this.timeOnly,
+      ControlName: this.controlName
     };
 
     this._StadiumService.registerEntry(payload).subscribe({
