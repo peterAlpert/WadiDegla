@@ -17,6 +17,7 @@ export class ViolationDetailsComponent {
   violationType: string = '';
   notes: string = '';
   date = new Date().toISOString();
+  time = new Date().getTime();
   violationReport = '';
 
   constructor(
@@ -31,10 +32,12 @@ export class ViolationDetailsComponent {
 
   submitViolation() {
     const payload = {
-      memberId: this.player.id,
-      type: this.violationType,
-      notes: this.notes,
-      date: this.date
+      MemberId: this.player.id,
+      Member: this.player,
+      Type: this.violationType,
+      Note: this.notes,
+      Date: this.date,
+      Time: this.time
     };
 
     this.violationService.saveViolation(payload).subscribe({
