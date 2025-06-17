@@ -34,8 +34,7 @@ export class ViolationDetailsComponent {
       memberId: this.player.id,
       type: this.violationType,
       note: this.notes,
-      date: this.now.toISOString().split('T')[0],
-      time: this.now.toTimeString().slice(0, 5)
+      date: this.now.toISOString().split('T')[0]
     };
 
     console.log(payload);
