@@ -46,8 +46,9 @@ export class InjuryComponent {
       ActionTaken: this.actionTaken,
       MemberId: this.player.id,
       StadeNo: this.player.firstEntry.stadeNo,
-      Date: this.now.getDate(),
-      Time: this.now.getTime()
+      Date: this.now.toISOString().split('T')[0],
+      Time: this.now.toTimeString().slice(0, 5)
+
     };
 
     console.log(injuryData);
