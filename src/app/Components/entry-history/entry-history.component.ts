@@ -76,7 +76,7 @@ export class EntryHistoryComponent implements OnInit {
 
   loadInjuries() {
     this.injuryService.getByMemberId(this.memberId).subscribe({
-      next: (res: any) => (this.injuries = res),
+      next: (res: any) => { this.injuries = res; console.log(this.injuries) },
       error: (err) => console.error('Error loading injuries:', err),
     });
   }
