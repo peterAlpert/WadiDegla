@@ -39,22 +39,25 @@ export class InjuryComponent {
   }
 
   submitInjuryToDatabase() {
-    this.generateInjuryReport();
     const injuryData = {
-      type: this.injuryType,
-      location: this.injuryLocation,
-      actionTaken: this.actionTaken,
-      memberId: this.player.id // تأكد إن عندك ID العضو هنا
+      InjuryType: this.injuryType,
+      InjuryLocation: this.injuryLocation,
+      ActionTaken: this.actionTaken,
+      MemberId: this.player.id
     };
 
-    this._InjuryService.addInjury(injuryData).subscribe({
-      next: () => {
-        this._ToastrService.success('تم حفظ الإصابة في قاعدة البيانات');
-      },
-      error: () => {
-        this._ToastrService.error('حدث خطأ أثناء حفظ الإصابة');
-      }
-    });
+    console.log(injuryData);
+    console.log(this.player);
+
+
+    // this._InjuryService.addInjury(injuryData).subscribe({
+    //   next: () => {
+    //     this._ToastrService.success('تم حفظ الإصابة في قاعدة البيانات');
+    //   },
+    //   error: () => {
+    //     this._ToastrService.error('حدث خطأ أثناء حفظ الإصابة');
+    //   }
+    // });
   }
 
   copyToClipboard(text: string) {

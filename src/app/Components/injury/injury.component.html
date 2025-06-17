@@ -38,8 +38,9 @@
             </div>
 
             <div class="text-center mb-3">
-                <button class="btn btn-warning w-50" (click)="submitInjuryToDatabase()"
-                    [disabled]="isFormInvalid()">إنشاء
+                <button class="btn btn-warning w-50" (click)="submitInjuryToDatabase()" [disabled]="isFormInvalid()">حفظ
+                </button>
+                <button class="btn btn-warning w-50" (click)="generateInjuryReport()" [disabled]="isFormInvalid()">إنشاء
                     التقرير</button>
             </div>
 
