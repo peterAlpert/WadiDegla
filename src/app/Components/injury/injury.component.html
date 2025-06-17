@@ -18,6 +18,7 @@
                 <label class="form-label fw-bold">نوع الإصابة</label>
                 <select class="form-select text-end" [(ngModel)]="injuryType">
                     <option value="" disabled selected>اختر نوع الإصابة</option>
+                    <option>أدعاء</option>
                     <option>كدمة</option>
                     <option>سجعة</option>
                     <option>جرح</option>
@@ -38,9 +39,9 @@
             </div>
 
             <div class="text-center mb-3">
-                <button class="btn btn-warning w-50" (click)="submitInjuryToDatabase()" [disabled]="isFormInvalid()">حفظ
+                <button class="btn btn-warning w-25" (click)="submitInjuryToDatabase()" [disabled]="isFormInvalid()">حفظ
                 </button>
-                <button class="btn btn-warning w-50" (click)="generateInjuryReport()" [disabled]="isFormInvalid()">إنشاء
+                <button class="btn btn-warning w-25" (click)="generateInjuryReport()" [disabled]="isFormInvalid()">إنشاء
                     التقرير</button>
             </div>
 

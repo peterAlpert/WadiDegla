@@ -19,6 +19,7 @@ export class InjuryComponent {
   injuryLocation = '';
   actionTaken = '';
   injuryReport = '';
+  now = new Date();
 
   constructor(
     private location: Location,
@@ -43,21 +44,24 @@ export class InjuryComponent {
       InjuryType: this.injuryType,
       InjuryLocation: this.injuryLocation,
       ActionTaken: this.actionTaken,
-      MemberId: this.player.id
+      MemberId: this.player.id,
+      StadeNo: this.player.firstEntry.stadeNo,
+      Date: this.now.getDate(),
+      Time: this.now.getTime()
     };
 
     console.log(injuryData);
     console.log(this.player);
 
 
-    // this._InjuryService.addInjury(injuryData).subscribe({
-    //   next: () => {
-    //     this._ToastrService.success('تم حفظ الإصابة في قاعدة البيانات');
-    //   },
-    //   error: () => {
-    //     this._ToastrService.error('حدث خطأ أثناء حفظ الإصابة');
-    //   }
-    // });
+    this._InjuryService.addInjury(injuryData).subscribe({
+      next: () => {
+        this._ToastrService.success('تم حفظ الإصابة في قاعدة البيانات');
+      },
+      error: () => {
+        this._ToastrService.error('حدث خطأ أثناء حفظ الإصابة');
+      }
+    });
   }
 
   copyToClipboard(text: string) {
