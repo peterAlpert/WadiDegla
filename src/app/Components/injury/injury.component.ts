@@ -41,13 +41,12 @@ export class InjuryComponent {
 
   submitInjuryToDatabase() {
     const injuryData = {
-      InjuryType: this.injuryType,
-      InjuryLocation: this.injuryLocation,
-      ActionTaken: this.actionTaken,
-      MemberId: this.player.id,
-      StadeNo: this.player.firstEntry.stadeNo,
-      Date: this.now.toISOString().split('T')[0],
-      Time: this.now.toTimeString().slice(0, 5)
+      type: this.injuryType,
+      location: this.injuryLocation,
+      actionTaken: this.actionTaken,
+      memberId: this.player.id,
+      stadeNo: this.player.firstEntry.stadeNo,
+      date: this.now.toISOString().split('T')[0]
 
     };
 
