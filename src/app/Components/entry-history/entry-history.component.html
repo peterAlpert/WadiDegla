@@ -68,7 +68,7 @@
                     <td>{{ v.type }}</td>
                     <td>{{ v.notes }}</td>
                     <td>{{ v.date | date: 'yyyy-MM-dd' }}</td>
-                    <td>{{ v.time.slice(0, 5) }}</td>
+                    <td>{{ v.time ? convertTo12Hour(v.time) : '' }}</td>
                 </tr>
             </tbody>
         </table>
