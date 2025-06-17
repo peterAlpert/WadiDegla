@@ -1,3 +1,4 @@
+import { InjuryService } from './../../Services/injury.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
@@ -21,6 +22,7 @@ export class InjuryComponent {
 
   constructor(
     private location: Location,
+    private _InjuryService: InjuryService,
     private _ToastrService: ToastrService
   ) {
     const nav = this.location.getState() as any;
@@ -34,6 +36,25 @@ export class InjuryComponent {
       مكان الإصابة بالجسم: ${this.injuryLocation}
       مكان الإصابة: ملعب ${this.player.stadeNo}
       الإجراء المتخذ: ${this.actionTaken}`;
+  }
+
+  submitInjuryToDatabase() {
+    this.generateInjuryReport();
+    const injuryData = {
+      type: this.injuryType,
+      location: this.injuryLocation,
+      actionTaken: this.actionTaken,
+      memberId: this.player.id // تأكد إن عندك ID العضو هنا
+    };
+
+    this._InjuryService.addInjury(injuryData).subscribe({
+      next: () => {
+        this._ToastrService.success('تم حفظ الإصابة في قاعدة البيانات');
+      },
+      error: () => {
+        this._ToastrService.error('حدث خطأ أثناء حفظ الإصابة');
+      }
+    });
   }
 
   copyToClipboard(text: string) {

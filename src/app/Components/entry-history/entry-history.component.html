@@ -1,7 +1,7 @@
 <div class="container py-4">
     <div class="card shadow-sm mb-4">
         <div class="card-body text-center">
-            <h4 class="card-title text-primary">تسجيل دخول عضو</h4>
+            <h4 class="card-title text-primary">السجل الكامل للعضو</h4>
             <p class="card-text fs-5 mt-3">
                 👤 <strong>{{ member?.memberName }}</strong><br />
                 عضوية رقم: <strong>{{ member?.membership }}</strong>
@@ -9,26 +9,88 @@
         </div>
     </div>
 
-    <table class="table table-bordered text-center" dir="rtl">
-        <thead class="table-dark">
-            <tr>
-                <th>#</th>
-                <th>التاريخ</th>
-                <th>الوقت</th>
-                <th>رقم الملعب</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let entry of entries; let i = index">
-                <td>{{ i + 1 }}</td>
-                <td>{{ entry.date | date: 'yyyy-MM-dd' }}</td>
-                <td>{{ entry.time.slice(0, 5) }}</td>
-                <td>{{ entry.stadeNo }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- الأزرار -->
+    <div class="text-center mb-4">
+        <button class="btn btn-outline-primary mx-2" (click)="showSection('entry')">📅 سجل الدخول</button>
+        <button class="btn btn-outline-danger mx-2" (click)="showSection('violation')">🚫 سجل المخالفات</button>
+        <button class="btn btn-outline-warning mx-2" (click)="showSection('injury')">💢 سجل الإصابات</button>
+    </div>
 
-    <div *ngIf="entries.length === 0" class="alert alert-warning text-center">
-        لا توجد سجلات دخول لهذا العضو
+    <!-- سجل دخول الملاعب -->
+    <div *ngIf="selectedSection === 'entry'">
+        <h5 class="text-center text-primary mb-3">📅 دخول الملاعب</h5>
+        <table class="table table-bordered text-center" dir="rtl">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>التاريخ</th>
+                    <th>الوقت</th>
+                    <th>رقم الملعب</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let entry of entries; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ entry.date | date: 'yyyy-MM-dd' }}</td>
+                    <td>{{ entry.time.slice(0, 5) }}</td>
+                    <td>{{ entry.stadeNo }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="entries.length === 0" class="alert alert-warning text-center">
+            لا توجد سجلات دخول لهذا العضو
+        </div>
+    </div>
+
+    <!-- سجل المخالفات -->
+    <div *ngIf="selectedSection === 'violation'">
+        <h5 class="text-center text-danger mb-3">🚫 المخالفات</h5>
+        <table class="table table-bordered text-center" dir="rtl">
+            <thead class="table-danger">
+                <tr>
+                    <th>#</th>
+                    <th>النوع</th>
+                    <th>الملاحظات</th>
+                    <th>التاريخ</th>
+                    <th>الوقت</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of violations; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ v.type }}</td>
+                    <td>{{ v.notes }}</td>
+                    <td>{{ v.date | date: 'yyyy-MM-dd' }}</td>
+                    <td>{{ v.time.slice(0, 5) }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- سجل الإصابات -->
+    <div *ngIf="selectedSection === 'injury'">
+        <h5 class="text-center text-warning mb-3">💢 الإصابات</h5>
+        <table class="table table-bordered text-center" dir="rtl">
+            <thead class="table-warning">
+                <tr>
+                    <th>#</th>
+                    <th>نوع الإصابة</th>
+                    <th>مكانها</th>
+                    <th>الإجراء</th>
+                    <th>التاريخ</th>
+                    <th>الوقت</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let injury of injuries; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ injury.type }}</td>
+                    <td>{{ injury.location }}</td>
+                    <td>{{ injury.action }}</td>
+                    <td>{{ injury.date | date: 'yyyy-MM-dd' }}</td>
+                    <td>{{ injury.time.slice(0, 5) }}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
