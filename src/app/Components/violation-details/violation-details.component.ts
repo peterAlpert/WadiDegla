@@ -31,11 +31,11 @@ export class ViolationDetailsComponent {
 
   submitViolation() {
     const payload = {
-      MemberId: this.player.id,
-      Type: this.violationType,
-      Note: this.notes,
-      Date: this.now.toISOString().split('T')[0],
-      Time: this.now.toTimeString().slice(0, 5)
+      memberId: this.player.id,
+      type: this.violationType,
+      note: this.notes,
+      date: this.now.toISOString().split('T')[0],
+      time: this.now.toTimeString().slice(0, 5)
     };
 
     console.log(payload);
