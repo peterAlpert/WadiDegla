@@ -17,8 +17,7 @@ import { environment } from '../../../environments/environment';
 export class ViolationHistoryComponent implements OnInit {
   member: Iplayer = {} as Iplayer;
   violations: IViolation[] = [];
-  allData: any[] = [];
-  filteredData: any[] = [];
+
 
   constructor(
     private router: Router,
@@ -37,26 +36,8 @@ export class ViolationHistoryComponent implements OnInit {
       });
     }
 
-    this._StadiumService.getAll().subscribe((res: any) => {
-      this.allData = res;
-      this.filteredData = res;
-    });
 
-    this.getAllData();
   }
 
-  getAllData() {
-    this._HttpClient.get<any[]>(`${environment.baseUrl}/Entry/first-entries`).subscribe((res) => {
-      this.allData = res;
-      this.filteredData = res;
-    });
-  }
 
-  filterByStadium(no: number) {
-    this.filteredData = this.allData.filter(x => x.stadeNo == no);
-  }
-
-  showAll() {
-    this.filteredData = this.allData;
-  }
 }
