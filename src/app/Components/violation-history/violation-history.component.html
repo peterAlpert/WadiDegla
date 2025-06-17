@@ -1,6 +1,15 @@
 <div class="container py-4 text-end" dir="rtl">
     <h4 class="text-center text-warning mb-4">سجل الانتهاكات لـ {{ member?.memberName }}</h4>
 
+    <!-- فلاتر الملاعب -->
+    <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+        <button class="btn btn-outline-primary" (click)="showAll()">الكل</button>
+        <button class="btn btn-outline-warning" (click)="filterByStadium(1)">ملعب 1</button>
+        <button class="btn btn-outline-warning" (click)="filterByStadium(2)">ملعب 2</button>
+        <button class="btn btn-outline-warning" (click)="filterByStadium(3)">ملعب 3</button>
+        <button class="btn btn-outline-warning" (click)="filterByStadium(4)">ملعب 4</button>
+    </div>
+
     <table class="table table-bordered text-center">
         <thead class="table-dark">
             <tr>
