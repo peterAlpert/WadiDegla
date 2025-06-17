@@ -16,8 +16,7 @@ export class ViolationDetailsComponent {
   player: any;
   violationType: string = '';
   notes: string = '';
-  date = new Date().toISOString();
-  time = new Date().getTime();
+  now = new Date();
   violationReport = '';
 
   constructor(
@@ -33,11 +32,10 @@ export class ViolationDetailsComponent {
   submitViolation() {
     const payload = {
       MemberId: this.player.id,
-      Member: this.player,
       Type: this.violationType,
       Note: this.notes,
-      Date: this.date,
-      Time: this.time
+      Date: this.now.toISOString().split('T')[0],
+      Time: this.now.toTimeString().slice(0, 5)
     };
 
     console.log(payload);
