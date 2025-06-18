@@ -9,7 +9,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  controlName: string | null = null;
+
+  ngOnInit(): void {
+    this.controlName = localStorage.getItem("controlName");
+  }
 
 
 }
