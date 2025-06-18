@@ -46,6 +46,9 @@ export class StadiumComponent implements OnInit {
   register() {
     const { memberName, membership, stadeNo } = this.member;
 
+    console.log(memberName, membership, stadeNo);
+
+
     this._StadiumService.checkIfEnteredToday(membership).subscribe({
       next: (hasEntered) => {
         if (hasEntered) {
