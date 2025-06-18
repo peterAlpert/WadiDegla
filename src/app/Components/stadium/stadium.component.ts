@@ -49,7 +49,7 @@ export class StadiumComponent implements OnInit {
     this._StadiumService.checkIfEnteredToday(membership).subscribe({
       next: (hasEntered) => {
         if (hasEntered) {
-          this.toastr.warning(`العضو ${memberName} (رقم العضوية: ${membership}) سجل دخول اليوم بالفعل`);
+          this.toastr.warning(`العضو ${memberName} (رقم العضوية: ${membership}) سجل دخول اليوم بالفعل في ملعب ${stadeNo}`);
         } else {
           // تابع التسجيل
           this.saveEntry();
@@ -76,7 +76,7 @@ export class StadiumComponent implements OnInit {
     };
 
     this._StadiumService.registerEntry(payload).subscribe({
-      next: () => this.toastr.success("تم تسجيل الدخول ✅"),
+      next: () => { this.toastr.success("تم تسجيل الدخول ✅"); this.resetForm(); },
       error: () => this.toastr.error("فشل تسجيل الدخول ❌")
     });
   }
