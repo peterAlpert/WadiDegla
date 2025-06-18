@@ -31,7 +31,7 @@ export class StadiumService {
   }
 
   checkIfEnteredToday(membership: number) {
-    return this.http.get(`${environment.baseUrl}/Entry/HasEnteredToday/${membership}`);
+    return this.http.get<boolean>(`${environment.baseUrl}/Entry/HasEnteredToday/${membership}`);
   }
 
   registerEntry(entry: any) {
