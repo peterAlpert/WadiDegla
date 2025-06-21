@@ -97,11 +97,28 @@ export class StadiumLogComponent implements OnInit {
     );
   }
 
-  filterByControl() {
-    this.filteredData = this.selectedControl
-      ? this.allData.filter(x => x.controlName === this.selectedControl)
-      : this.allData;
+  // filterByControl() {
+  //   this.filteredData = this.selectedControl
+  //     ? this.allData.filter(x => x.controlName === this.selectedControl)
+  //     : this.allData;
+  // }
+
+  startVoiceSearch() {
+    const recognition = new (window as any).webkitSpeechRecognition();
+    recognition.lang = 'ar-EG';
+    recognition.start();
+
+    recognition.onresult = (event: any) => {
+      const speechResult = event.results[0][0].transcript;
+      this.searchTerm = speechResult;
+      this.filterBySearch();
+    };
+
+    recognition.onerror = (event: any) => {
+      console.error('حدث خطأ أثناء التعرف على الصوت:', event.error);
+    };
   }
+
 
 
 

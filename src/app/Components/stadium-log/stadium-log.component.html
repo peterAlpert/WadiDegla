@@ -5,8 +5,20 @@
     <!-- شريط الفلترة -->
     <div class="row align-items-end g-3 mb-3">
         <div class="col-12 col-md-6">
-            <input type="text" class="form-control" placeholder="ابحث بالاسم أو رقم العضوية" [(ngModel)]="searchTerm"
-                (input)="filterBySearch()" />
+            <!-- <input type="text" class="form-control" placeholder="ابحث بالاسم أو رقم العضوية" [(ngModel)]="searchTerm"
+                (input)="filterBySearch()" /> -->
+
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="ابحث بالاسم أو رقم العضوية"
+                    [(ngModel)]="searchTerm" (input)="filterBySearch()" />
+
+                <button class="btn btn-outline-secondary" type="button" (click)="startVoiceSearch()">
+                    🎙️ تحدث
+                </button>
+            </div>
+
+
+
         </div>
 
         <div class="col-12 col-md-6">
