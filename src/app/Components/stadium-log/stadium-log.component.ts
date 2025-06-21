@@ -42,11 +42,11 @@ export class StadiumLogComponent implements OnInit {
     const now = new Date();
     this.controlName = localStorage.getItem('controlName') || 'control';
 
-    this._StadiumService.getAll().subscribe((res: any) => {
-      this.allData = res;
-      this.filteredData = res;
-      this.updatePagedData();
-    });
+    // this._StadiumService.getAll().subscribe((res: any) => {
+    //   this.allData = res;
+    //   this.filteredData = res;
+    //   this.updatePagedData();
+    // });
 
     const name = localStorage.getItem('controlName');
     this.controlName = name ?? 'control';
@@ -73,6 +73,7 @@ export class StadiumLogComponent implements OnInit {
     this.http.get<any[]>(`${environment.baseUrl}/Entry/first-entries`).subscribe((res) => {
       this.allData = res;
       this.filteredData = res;
+      this.updatePagedData();
     });
 
   }
