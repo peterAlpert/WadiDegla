@@ -21,8 +21,15 @@ export class StadiumLogComponent implements OnInit {
   filterDate: string = '';
   controlName: string = '';
   player: Iplayer = {} as Iplayer;
+
+  //voice btns
   recognition: any;
   isRecording = false;
+
+  //pagination
+  pageSize = 10;
+  currentPage = 1;
+  pagedData: any[] = [];
 
   constructor(
     private http: HttpClient,
@@ -38,11 +45,28 @@ export class StadiumLogComponent implements OnInit {
     this._StadiumService.getAll().subscribe((res: any) => {
       this.allData = res;
       this.filteredData = res;
+      this.updatePagedData();
     });
 
     const name = localStorage.getItem('controlName');
     this.controlName = name ?? 'control';
     this.getAllData();
+  }
+
+  //pagination funcs
+  updatePagedData() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    this.pagedData = this.filteredData.slice(start, end);
+  }
+
+  goToPage(page: number) {
+    this.currentPage = page;
+    this.updatePagedData();
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.filteredData.length / this.pageSize);
   }
 
   getAllData() {
@@ -55,10 +79,14 @@ export class StadiumLogComponent implements OnInit {
 
   filterByStadium(no: number) {
     this.filteredData = this.allData.filter(x => x.stadeNo == no);
+    this.currentPage = 1;
+    this.updatePagedData();
   }
 
   showAll() {
     this.filteredData = this.allData;
+    this.currentPage = 1;
+    this.updatePagedData();
   }
 
   filterByDate() {
@@ -68,6 +96,8 @@ export class StadiumLogComponent implements OnInit {
     }
 
     this.filteredData = this.allData.filter(item => item.date === this.filterDate);
+    this.currentPage = 1;
+    this.updatePagedData();
   }
 
 
@@ -85,6 +115,8 @@ export class StadiumLogComponent implements OnInit {
   resetDateFilter() {
     this.filterDate = '';
     this.filteredData = this.allData;
+    this.currentPage = 1;
+    this.updatePagedData();
   }
 
   searchTerm: string = '';
@@ -97,6 +129,8 @@ export class StadiumLogComponent implements OnInit {
       item.memberName.toLowerCase().includes(term) ||
       item.membership.toString().includes(term)
     );
+    this.currentPage = 1;
+    this.updatePagedData();
   }
 
   // filterByControl() {
