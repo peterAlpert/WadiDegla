@@ -1,3 +1,4 @@
+import { SharedService } from './../../Services/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -12,8 +13,15 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent implements OnInit {
   controlName: string | null = null;
 
+  constructor(
+    private _SharedService: SharedService
+  ) { }
+
   ngOnInit(): void {
-    this.controlName = localStorage.getItem("controlName");
+
+    this._SharedService.controlName$.subscribe(name => {
+      this.controlName = name;
+    });
   }
 
 

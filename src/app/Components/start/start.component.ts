@@ -1,3 +1,4 @@
+import { SharedService } from './../../Services/shared.service';
 import { ToastrService } from 'ngx-toastr';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +17,7 @@ export class StartComponent {
   touched: boolean = false;
 
   constructor(
+    private _SharedService: SharedService,
     private _ToastrService: ToastrService,
     private _router: Router
   ) { }
@@ -26,7 +28,7 @@ export class StartComponent {
 
 
     if (trimmedName) {
-      localStorage.setItem('controlName', trimmedName);
+      this._SharedService.setControlName(trimmedName);
       this._ToastrService.success("تم تسجيل الاسم بنجاح");
       this._router.navigate(['/enterStadium']);
 
