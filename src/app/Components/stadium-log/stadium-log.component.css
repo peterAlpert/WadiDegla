@@ -3,3 +3,26 @@
     /* أحمر غامق */
     color: white;
 }
+
+.mic-pulsing {
+    animation: pulse 1s infinite;
+    color: red;
+    /* لون مميز أثناء التسجيل */
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

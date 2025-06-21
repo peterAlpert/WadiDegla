@@ -21,6 +21,8 @@ export class StadiumLogComponent implements OnInit {
   filterDate: string = '';
   controlName: string = '';
   player: Iplayer = {} as Iplayer;
+  recognition: any;
+  isRecording = false;
 
   constructor(
     private http: HttpClient,
@@ -104,19 +106,34 @@ export class StadiumLogComponent implements OnInit {
   // }
 
   startVoiceSearch() {
-    const recognition = new (window as any).webkitSpeechRecognition();
-    recognition.lang = 'ar-EG';
-    recognition.start();
+    this.isRecording = true;
+    this.recognition = new (window as any).webkitSpeechRecognition();
+    this.recognition.lang = 'ar-EG';
+    this.recognition.continuous = false;
 
-    recognition.onresult = (event: any) => {
+    this.recognition.onresult = (event: any) => {
       const speechResult = event.results[0][0].transcript;
       this.searchTerm = speechResult;
       this.filterBySearch();
     };
 
-    recognition.onerror = (event: any) => {
-      console.error('حدث خطأ أثناء التعرف على الصوت:', event.error);
+    this.recognition.onerror = (event: any) => {
+      console.error('حدث خطأ في التعرف على الصوت:', event.error);
     };
+
+    this.recognition.start();
+  }
+
+  stopVoiceSearch() {
+    this.isRecording = false;
+    if (this.recognition) {
+      this.recognition.stop();
+    }
+  }
+
+  clearSearch() {
+    this.searchTerm = '';
+    this.filterBySearch();
   }
 
 
