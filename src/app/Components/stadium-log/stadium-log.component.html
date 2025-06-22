@@ -71,6 +71,7 @@
                     <th>#</th>
                     <th>العضو</th>
                     <th>العضوية</th>
+                    <th>تاريخ الدخول</th>
                     <th>السجل</th>
                     <th>تسجيل جديد</th>
                     <th>مخالفه</th>
@@ -84,6 +85,7 @@
                     <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
                     <td>{{ item.memberName }}</td>
                     <td>{{ item.membership }}</td>
+                    <td>{{ item.FirstEntry.date }}</td>
 
                     <td>
                         <button class="btn btn-outline-info btn-sm w-100" (click)="viewEntryHistory(item)">
