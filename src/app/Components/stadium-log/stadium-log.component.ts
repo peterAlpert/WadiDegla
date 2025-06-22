@@ -70,11 +70,14 @@ export class StadiumLogComponent implements OnInit {
   }
 
   getAllData() {
-    this.http.get<any[]>(`${environment.baseUrl}/Entry/first-entries`).subscribe((res) => {
-      this.allData = res;
-      this.filteredData = res;
-      this.updatePagedData();
-    });
+    this.http.get<any[]>(`${environment.baseUrl}/Entry/first-entries`).subscribe(
+      (res) => {
+        this.allData = res;
+        this.filteredData = res;
+        console.log(res);
+
+        this.updatePagedData();
+      });
 
   }
 
