@@ -29,7 +29,7 @@ export class LoginComponent {
       password: this.password
     }
     console.log(user);
-    this._HttpClient.post(`${environment.baseUrl}/auth/login`, user).subscribe({
+    this._HttpClient.post(`${environment.baseUrl}/Auth/login`, user).subscribe({
       next: (res: any) => {
         localStorage.setItem('token', res.token);
         this._Router.navigate(['/']);
