@@ -99,7 +99,7 @@ export class StadiumLogComponent implements OnInit {
       return;
     }
 
-    this.filteredData = this.allData.filter(item => item.date === this.filterDate);
+    this.filteredData = this.allData.filter(item => item.firstEntry.date === this.filterDate);
     this.currentPage = 1;
     this.updatePagedData();
   }
