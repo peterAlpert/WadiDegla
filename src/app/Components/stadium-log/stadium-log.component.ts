@@ -82,7 +82,7 @@ export class StadiumLogComponent implements OnInit {
   }
 
   filterByStadium(no: number) {
-    this.filteredData = this.allData.filter(x => x.stadeNo == no);
+    this.filteredData = this.allData.filter(x => x.firstEntry.stadeNo == no);
     this.currentPage = 1;
     this.updatePagedData();
   }
@@ -174,46 +174,43 @@ export class StadiumLogComponent implements OnInit {
     this.filterBySearch();
   }
 
+  // insult(player: Iplayer) {
+  //   console.log(player);
 
+  //   this._Router.navigate([`/violation/${player.memberName}/${player.membership}/insult`], { state: { member: player } });
+  // }
 
+  // joke(player: Iplayer) {
+  //   this._Router.navigate([`/violation/${player.memberName}/${player.membership}/joke`], { state: { member: player } });
+  // }
 
-  insult(player: Iplayer) {
-    console.log(player);
+  // fight(player: Iplayer) {
+  //   this._Router.navigate([`/violation/${player.memberName}/${player.membership}/fight`], { state: { member: player } });
 
-    this._Router.navigate([`/violation/${player.memberName}/${player.membership}/insult`], { state: { member: player } });
-  }
-
-  joke(player: Iplayer) {
-    this._Router.navigate([`/violation/${player.memberName}/${player.membership}/joke`], { state: { member: player } });
-  }
-
-  fight(player: Iplayer) {
-    this._Router.navigate([`/violation/${player.memberName}/${player.membership}/fight`], { state: { member: player } });
-
-  }
+  // }
 
   viewHistory(member: any) {
     this._Router.navigateByUrl('/violation-history', { state: { member } });
   }
 
 
-  checkWarnings() {
-    this.filteredData.forEach(player => {
-      if (player.insult >= 5) {
-        this._ToastrService.warning(`${player.memberName} تجاوز عدد التلفظات (أكثر من 5)!`);
-      }
-      if (player.joke >= 5) {
-        this._ToastrService.warning(`${player.memberName} تجاوز عدد الهزار الغير لائق (أكثر من 5)!`);
-      }
-      if (player.fight >= 5) {
-        this._ToastrService.warning(`${player.memberName} تجاوز عدد المشادات (أكثر من 5)!`);
-      }
-    });
-  }
+  // checkWarnings() {
+  //   this.filteredData.forEach(player => {
+  //     if (player.insult >= 5) {
+  //       this._ToastrService.warning(`${player.memberName} تجاوز عدد التلفظات (أكثر من 5)!`);
+  //     }
+  //     if (player.joke >= 5) {
+  //       this._ToastrService.warning(`${player.memberName} تجاوز عدد الهزار الغير لائق (أكثر من 5)!`);
+  //     }
+  //     if (player.fight >= 5) {
+  //       this._ToastrService.warning(`${player.memberName} تجاوز عدد المشادات (أكثر من 5)!`);
+  //     }
+  //   });
+  // }
 
-  sortBy(type: 'insult' | 'joke' | 'fight') {
-    this.filteredData.sort((a, b) => b[type] - a[type]);
-  }
+  // sortBy(type: 'insult' | 'joke' | 'fight') {
+  //   this.filteredData.sort((a, b) => b[type] - a[type]);
+  // }
 
   goToInjuryPage(player: any) {
     this._Router.navigate(['/injury'], { state: { player } });
