@@ -19,12 +19,13 @@
 
     <div class="mb-3 text-end">
         <label class="form-label">رقم العضوية</label>
-        <input class="form-control text-end" type="number" [(ngModel)]="member.membership" name="membership"
-            placeholder="ادخل رقم العضوية" />
+        <input class="form-control text-end" type="text" [(ngModel)]="member.membership" name="membership"
+            placeholder="ادخل رقم العضوية" (ngModelChange)="onMembershipChange()" />
     </div>
     <div *ngIf="member.membership && isMembershipInvalid()" class="text-danger small text-end">
-        يجب أن يكون رقم العضوية 5 أو 6 أرقام فقط
+        يجب إدخال أرقام عربي فقط مكونة من 5 أو 6 أرقام
     </div>
+
 
     <div class="mb-3 text-end">
         <label class="form-label" for="stadeNo">رقم الملعب</label>

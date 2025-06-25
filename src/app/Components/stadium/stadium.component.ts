@@ -161,4 +161,22 @@ export class StadiumComponent implements OnInit {
     const value = String(this.member.membership || '');
     return !/^\d{5,6}$/.test(value);
   }
+
+  // للتأكد من إزالة الصفر الأول واستبدال الأرقام الإنجليزية بالعربية:
+  onMembershipChange() {
+    if (this.member.membership) {
+      let value = this.member.membership.toString();
+
+      // إزالة أول صفر لو موجود
+      if (value.startsWith('0')) {
+        value = value.substring(1);
+      }
+
+      // تحويل الأرقام الإنجليزية إلى عربية
+      value = value.replace(/[0-9]/g, d => String.fromCharCode(0x0660 + +d));
+
+      this.member.membership = Number(value);
+    }
+  }
+
 }
