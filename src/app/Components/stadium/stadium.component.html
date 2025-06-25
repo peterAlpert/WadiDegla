@@ -19,8 +19,9 @@
 
     <div class="mb-3 text-end">
         <label class="form-label">رقم العضوية</label>
-        <input class="form-control text-end" type="text" [(ngModel)]="member.membership" name="membership"
-            placeholder="ادخل رقم العضوية" (ngModelChange)="onMembershipChange()" />
+        <input class="form-control text-end" type="text" inputmode="numeric" [(ngModel)]="member.membership"
+            name="membership" placeholder="ادخل رقم العضوية" (ngModelChange)="onMembershipChange()" />
+
     </div>
     <div *ngIf="member.membership && isMembershipInvalid()" class="text-danger small text-end">
         يجب إدخال أرقام عربي فقط مكونة من 5 أو 6 أرقام

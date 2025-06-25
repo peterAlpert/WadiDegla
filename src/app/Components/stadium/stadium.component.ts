@@ -21,7 +21,7 @@ export class StadiumComponent implements OnInit {
 
   member = {
     memberName: '',
-    membership: 0,
+    membership: '',
     date: this.now,
     time: this.timeOnly,
     controlName: this.controlName,
@@ -49,10 +49,10 @@ export class StadiumComponent implements OnInit {
     console.log(memberName, membership, stadeNo);
 
 
-    this._StadiumService.checkIfEnteredToday(membership).subscribe({
+    this._StadiumService.checkIfEnteredToday(Number(membership)).subscribe({
       next: (hasEntered) => {
         if (hasEntered) {
-          this.toastr.warning(`العضو ${memberName} (رقم العضوية: ${membership}) سجل دخول اليوم بالفعل في ملعب ${stadeNo}`);
+          this.toastr.warning(`العضو ${memberName} (رقم العضوية: ${membership}) سجل دخول اليوم بالفعل في الملاعب `);
         } else {
           // تابع التسجيل
           this.saveEntry();
@@ -139,7 +139,7 @@ export class StadiumComponent implements OnInit {
   resetForm() {
     this.member = {
       memberName: '',
-      membership: 0,
+      membership: '',
       stadeNo: 1,
       date: this.now,
       time: this.timeOnly,
@@ -158,25 +158,30 @@ export class StadiumComponent implements OnInit {
   }
 
   isMembershipInvalid(): boolean {
-    const value = String(this.member.membership || '');
-    return !/^\d{5,6}$/.test(value);
+    const value = this.member.membership;
+    return !(value && /^[٠-٩]{5,6}$/.test(value));
   }
+
 
   // للتأكد من إزالة الصفر الأول واستبدال الأرقام الإنجليزية بالعربية:
   onMembershipChange() {
     if (this.member.membership) {
-      let value = this.member.membership.toString();
+      let value = this.member.membership;
 
       // إزالة أول صفر لو موجود
       if (value.startsWith('0')) {
         value = value.substring(1);
       }
 
+      // إزالة أي حرف غير رقم إنجليزي أو عربي
+      value = value.replace(/[^\d٠-٩]/g, '');
+
       // تحويل الأرقام الإنجليزية إلى عربية
       value = value.replace(/[0-9]/g, d => String.fromCharCode(0x0660 + +d));
 
-      this.member.membership = Number(value);
+      this.member.membership = value;
     }
   }
+
 
 }
