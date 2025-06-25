@@ -146,9 +146,7 @@ export class StadiumComponent implements OnInit {
       controlName: this.controlName
     };
   }
-  relod() {
-    window.location.reload();
-  }
+
 
   // ✅ صلاحية النموذج
   isFormValid(): boolean {
@@ -176,8 +174,8 @@ export class StadiumComponent implements OnInit {
       // إزالة أي حرف غير رقم إنجليزي أو عربي
       value = value.replace(/[^\d٠-٩]/g, '');
 
-      // تحويل الأرقام الإنجليزية إلى عربية
-      value = value.replace(/[0-9]/g, d => String.fromCharCode(0x0660 + +d));
+      // // تحويل الأرقام الإنجليزية إلى عربية
+      // value = value.replace(/[0-9]/g, d => String.fromCharCode(0x0660 + +d));
 
       this.member.membership = value;
     }
