@@ -24,10 +24,6 @@
                 </button>
             </div>
 
-
-
-
-
         </div>
 
         <div class="col-12 col-md-6">
@@ -72,11 +68,10 @@
                     <th>العضو</th>
                     <th>العضوية</th>
                     <th>تاريخ الدخول</th>
+                    <th>ملعب</th>
                     <th>السجل</th>
                     <th>تسجيل جديد</th>
                     <th>مخالفه</th>
-                    <!-- <th>هزار</th>
-                    <th>تشاجر</th> -->
                     <th>اصابه</th>
                 </tr>
             </thead>
@@ -86,6 +81,7 @@
                     <td>{{ item.memberName }}</td>
                     <td>{{ item.membership }}</td>
                     <td>{{ item.firstEntry.date }}</td>
+                    <td>{{ item.firstEntry.stadeNo }}</td>
 
                     <td>
                         <button class="btn btn-outline-info btn-sm w-100" (click)="viewEntryHistory(item)">
