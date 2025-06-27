@@ -70,7 +70,7 @@ export class StadiumLogComponent implements OnInit {
   }
 
   getAllData() {
-    this.http.get<any[]>(`${environment.baseUrl}/Entry/first-entries`).subscribe(
+    this.http.get<any[]>(`${environment.baseUrl}/Entry/last-entries`).subscribe(
       (res) => {
         this.allData = res;
         this.filteredData = res;
@@ -82,7 +82,7 @@ export class StadiumLogComponent implements OnInit {
   }
 
   filterByStadium(no: number) {
-    this.filteredData = this.allData.filter(x => x.firstEntry.stadeNo == no);
+    this.filteredData = this.allData.filter(x => x.LastEntry.stadeNo == no);
     this.currentPage = 1;
     this.updatePagedData();
   }
@@ -99,7 +99,7 @@ export class StadiumLogComponent implements OnInit {
       return;
     }
 
-    this.filteredData = this.allData.filter(item => item.firstEntry.date === this.filterDate);
+    this.filteredData = this.allData.filter(item => item.LastEntry.date === this.filterDate);
     this.currentPage = 1;
     this.updatePagedData();
   }

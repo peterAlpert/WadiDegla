@@ -59,7 +59,7 @@ export class ViolationDetailsComponent {
     this.violationReport = `📌 تقرير ${this.violationType}
 الاسم: ${this.player.memberName}
 رقم العضوية: ${this.player.membership}
-رقم الملعب: ${this.player.stadeNo}
+رقم الملعب: ${this.player.LastEntry.stadeNo}
 الوقت: ${time}
 التاريخ: ${date}
 الملاحظات: ${this.notes}`;

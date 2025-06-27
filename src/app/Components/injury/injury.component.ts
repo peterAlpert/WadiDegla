@@ -35,7 +35,7 @@ export class InjuryComponent {
       رقم عضوية: ${this.player.membership}
       نوع الإصابة: ${this.injuryType}
       مكان الإصابة بالجسم: ${this.injuryLocation}
-      مكان الإصابة: ملعب ${this.player.stadeNo}
+      مكان الإصابة: ملعب ${this.player.LastEntry.stadeNo}
       الإجراء المتخذ: ${this.actionTaken}`;
   }
 
@@ -45,7 +45,7 @@ export class InjuryComponent {
       location: this.injuryLocation,
       actionTaken: this.actionTaken,
       memberId: this.player.id,
-      stadeNo: this.player.firstEntry.stadeNo,
+      stadeNo: this.player.LastEntry.stadeNo,
       date: this.now.toISOString().split('T')[0]
 
     };
