@@ -29,8 +29,8 @@
                     placeholder="اكتب ملاحظات عن {{ violationType }}"></textarea>
             </div>
 
-            <div class="text-center mb-3">
-                <button class="btn btn-warning w-25 gap-5" (click)="generateViolationReport()"
+            <div class="text-center mb-3 d-flex justify-content-center gap-3">
+                <button class="btn btn-warning w-25" (click)="generateViolationReport()"
                     [disabled]="!notes.trim() || !violationType">
                     إنشاء التقرير
                 </button>
@@ -39,6 +39,7 @@
                     حفظ التقرير
                 </button>
             </div>
+
 
             <div *ngIf="violationReport">
                 <div class="alert alert-info text-end">

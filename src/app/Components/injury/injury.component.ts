@@ -1,7 +1,7 @@
 import { InjuryService } from './../../Services/injury.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
 
@@ -13,13 +13,15 @@ import { Location } from '@angular/common';
   templateUrl: './injury.component.html',
   styleUrl: './injury.component.css'
 })
-export class InjuryComponent {
+export class InjuryComponent implements OnInit {
   player: any;
   injuryType = '';
   injuryLocation = '';
   actionTaken = '';
   injuryReport = '';
   now = new Date();
+
+  controlName: any = '';
 
   constructor(
     private location: Location,
@@ -30,13 +32,18 @@ export class InjuryComponent {
     this.player = nav.player;
   }
 
+  ngOnInit(): void {
+    this.controlName = localStorage.getItem('controlName');
+  }
+
   generateInjuryReport() {
     this.injuryReport = `إصابة العضو: ${this.player.memberName}
       رقم عضوية: ${this.player.membership}
       نوع الإصابة: ${this.injuryType}
       مكان الإصابة بالجسم: ${this.injuryLocation}
       مكان الإصابة: ملعب ${this.player.lastEntry.stadeNo}
-      الإجراء المتخذ: ${this.actionTaken}`;
+      الإجراء المتخذ: ${this.actionTaken}
+      الكنترول : ${this.controlName}`;
   }
 
   submitInjuryToDatabase() {

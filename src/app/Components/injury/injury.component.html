@@ -38,11 +38,13 @@
                     placeholder="مثال: وضع ثلج وتم التواصل مع ولي الأمر"></textarea>
             </div>
 
-            <div class="text-center mb-3">
-                <button class="btn btn-warning w-25" (click)="submitInjuryToDatabase()" [disabled]="isFormInvalid()">حفظ
+            <div class="text-center mb-3 d-flex justify-content-center gap-3">
+                <button class="btn btn-warning w-25" (click)="submitInjuryToDatabase()" [disabled]="isFormInvalid()">
+                    حفظ
                 </button>
-                <button class="btn btn-warning w-25" (click)="generateInjuryReport()" [disabled]="isFormInvalid()">إنشاء
-                    التقرير</button>
+                <button class="btn btn-warning w-25" (click)="generateInjuryReport()" [disabled]="isFormInvalid()">
+                    إنشاء التقرير
+                </button>
             </div>
 
             <div *ngIf="injuryReport">

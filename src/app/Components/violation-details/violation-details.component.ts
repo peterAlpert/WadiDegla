@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
@@ -12,12 +12,14 @@ import { ViolationService } from '../../Services/violation.service';
   imports: [CommonModule, FormsModule],
   templateUrl: './violation-details.component.html',
 })
-export class ViolationDetailsComponent {
+export class ViolationDetailsComponent implements OnInit {
   player: any;
   violationType: string = '';
   notes: string = '';
   now = new Date();
   violationReport = '';
+
+  controlName: any = '';
 
   constructor(
     private location: Location,
@@ -26,6 +28,9 @@ export class ViolationDetailsComponent {
   ) {
     const nav = this.location.getState() as any;
     this.player = nav.player;
+  }
+  ngOnInit(): void {
+    this.controlName = localStorage.getItem('controlName');
   }
 
 
@@ -62,7 +67,8 @@ export class ViolationDetailsComponent {
 رقم الملعب: ${this.player.LastEntry.stadeNo}
 الوقت: ${time}
 التاريخ: ${date}
-الملاحظات: ${this.notes}`;
+الملاحظات: ${this.notes}
+الكنترول: ${this.controlName}`
   }
 
   copyToClipboard(text: string) {
