@@ -1,4 +1,5 @@
 <div class="container py-4">
+    <!-- بيانات العضو -->
     <div class="card shadow-sm mb-4">
         <div class="card-body text-center">
             <h4 class="card-title text-primary">السجل الكامل للعضو</h4>
@@ -9,6 +10,34 @@
         </div>
     </div>
 
+    <!-- ملخص السجلات -->
+    <div class="row text-center mb-4">
+        <div class="col-md-4 mb-2">
+            <div class="card border-primary shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-primary">مرات الدخول</h6>
+                    <h4>{{ entries.length }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-2">
+            <div class="card border-danger shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-danger">عدد المخالفات</h6>
+                    <h4>{{ violations.length }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-2">
+            <div class="card border-warning shadow-sm">
+                <div class="card-body">
+                    <h6 class="text-warning">عدد الإصابات</h6>
+                    <h4>{{ injuries.length }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- الأزرار -->
     <div class="text-center mb-4" dir="rtl">
         <button class="btn btn-outline-primary mx-2" (click)="showSection('entry')">📅 سجل الدخول</button>
@@ -16,19 +45,11 @@
         <button class="btn btn-outline-danger mx-2" (click)="showSection('injury')">💢 سجل الإصابات</button>
     </div>
 
-    <!-- سجل دخول الملاعب -->
+    <!-- سجل الدخول -->
     <div *ngIf="selectedSection === 'entry'">
         <h5 class="text-center text-primary mb-3">
             📅 دخول الملاعب - عدد المرات: <strong>{{ entries.length }}</strong>
         </h5>
-        <!-- <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" dir="rtl">
-            <button class="btn btn-outline-primary" (click)="showAll()">الكل</button>
-            <button class="btn btn-outline-warning" (click)="filterByStadium(1)">ملعب 1</button>
-            <button class="btn btn-outline-warning" (click)="filterByStadium(2)">ملعب 2</button>
-            <button class="btn btn-outline-warning" (click)="filterByStadium(3)">ملعب 3</button>
-            <button class="btn btn-outline-warning" (click)="filterByStadium(4)">ملعب 4</button>
-        </div> -->
-        <h5 class="text-center text-primary mb-3">📅 دخول الملاعب</h5>
         <table class="table table-bordered text-center" dir="rtl">
             <thead class="table-primary">
                 <tr>
@@ -56,12 +77,11 @@
 
     <!-- سجل المخالفات -->
     <div *ngIf="selectedSection === 'violation'">
-        <h5 class="text-center text-warning mb-3">
+        <h5 class="text-center text-danger mb-3">
             🚫 المخالفات - عدد المخالفات: <strong>{{ violations.length }}</strong>
         </h5>
-        <h5 class="text-center text-warning mb-3">🚫 المخالفات</h5>
         <table class="table table-bordered text-center" dir="rtl">
-            <thead class="table-warning">
+            <thead class="table-danger">
                 <tr>
                     <th>#</th>
                     <th>النوع</th>
@@ -78,16 +98,18 @@
                 </tr>
             </tbody>
         </table>
+        <div *ngIf="violations.length === 0" class="alert alert-warning text-center">
+            لا توجد مخالفات لهذا العضو
+        </div>
     </div>
 
     <!-- سجل الإصابات -->
     <div *ngIf="selectedSection === 'injury'">
-        <h5 class="text-center text-danger mb-3">
+        <h5 class="text-center text-warning mb-3">
             💢 الإصابات - عدد الحالات: <strong>{{ injuries.length }}</strong>
         </h5>
-        <h5 class="text-center text-danger mb-3">💢 الإصابات</h5>
         <table class="table table-bordered text-center" dir="rtl">
-            <thead class="table-danger">
+            <thead class="table-warning">
                 <tr>
                     <th>#</th>
                     <th>نوع الإصابة</th>
@@ -108,5 +130,8 @@
                 </tr>
             </tbody>
         </table>
+        <div *ngIf="injuries.length === 0" class="alert alert-warning text-center">
+            لا توجد إصابات لهذا العضو
+        </div>
     </div>
 </div>
