@@ -85,7 +85,6 @@ export class PrivateBookingComponent implements OnInit {
         this._BookingService.addBooking(this.booking).subscribe({
           next: () => {
             this._Toastr.success('✅ تم حجز ملعب 4 بنجاح');
-            this._Router.navigate(['/']);
           },
           error: () => {
             this._Toastr.error('حدث خطأ أثناء الحجز');

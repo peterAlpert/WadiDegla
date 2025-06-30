@@ -82,7 +82,7 @@ export class StadiumLogComponent implements OnInit {
   }
 
   filterByStadium(no: number) {
-    this.filteredData = this.allData.filter(x => x.LastEntry.stadeNo == no);
+    this.filteredData = this.allData.filter(x => x.lastEntry.stadeNo == no);
     this.currentPage = 1;
     this.updatePagedData();
   }
