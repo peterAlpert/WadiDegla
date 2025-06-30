@@ -10,7 +10,7 @@ import { BookingService } from '../../Services/booking.service';
     <div class="container py-4">
       <h3 class="text-center text-primary mb-4">حجوزات ملعب 4 - اليوم</h3>
       <table class="table table-bordered text-center">
-        <thead class="table-light">
+        <thead class="table-light" dir="rtl">
           <tr>
             <th>اللاعب</th>
             <th>الساعة</th>
@@ -27,7 +27,7 @@ import { BookingService } from '../../Services/booking.service';
                 {{ booking.isPaid ? '✔️ نعم' : '❌ لا' }}
               </span>
             </td>
-            <td>{{ booking.controlName || 'غير محدد' }}</td>
+            <td>{{ controlName || 'غير محدد' }}</td>
           </tr>
           <tr *ngIf="privateBookings.length === 0">
             <td colspan="4">لا توجد حجوزات حتى الآن</td>
@@ -40,10 +40,13 @@ import { BookingService } from '../../Services/booking.service';
 })
 export class PrivateBookingsTodayComponent implements OnInit {
   privateBookings: any[] = [];
+  controlName: any = '';
 
   constructor(private _BookingService: BookingService) { }
 
   ngOnInit(): void {
+    this.controlName = localStorage.getItem('controlName');
+
     const today = new Date().toISOString().split('T')[0];
     this._BookingService.getBookingsByDate(today).subscribe({
       next: (bookings) => {
