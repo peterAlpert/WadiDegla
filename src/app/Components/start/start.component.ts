@@ -24,17 +24,20 @@ export class StartComponent {
 
   saveName() {
     const trimmedName = this.controlName.trim();
-    console.log(trimmedName);
 
+    // تقسيم الاسم إلى كلمات بناءً على المسافات
+    const nameParts = trimmedName.split(/\s+/);
 
-    if (trimmedName) {
+    if (!trimmedName) {
+      this._ToastrService.error("من فضلك ادخل الاسم");
+    } else if (nameParts.length < 2) {
+      this._ToastrService.error("يجب إدخال اسم ثنائي على الأقل");
+    } else {
       this._SharedService.setControlName(trimmedName);
       this._ToastrService.success("تم تسجيل الاسم بنجاح");
       this._router.navigate(['/enterStadium']);
-
-    } else {
-      this._ToastrService.error("من فضلك ادخل الاسم");
     }
   }
+
 
 }

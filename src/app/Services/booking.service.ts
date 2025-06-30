@@ -21,4 +21,9 @@ export class BookingService {
   deleteBooking(id: number): Observable<any> {
     return this._HttpClient.delete(`${environment.baseUrl}/Booking/delete/${id}`);
   }
+
+  getBookingsByDate(date: string) {
+    return this._HttpClient.get<any[]>(`${environment.baseUrl}/Booking/by-date/${date}`);
+  }
+
 }
