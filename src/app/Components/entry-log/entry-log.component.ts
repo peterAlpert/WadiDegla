@@ -23,6 +23,7 @@ export class EntryLogComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private _StadiumService: StadiumService,
     private router: Router,
     private _EntryService: EntryService,
     private toastr: ToastrService
@@ -55,16 +56,30 @@ export class EntryLogComponent implements OnInit {
       ControlName: this.ControlName
     };
 
-    console.log(entryData);
+    // تحقق إذا كان العضو دخل النهارده في أي ملعب
+    this._StadiumService.checkIfEnteredToday(this.memShip).subscribe({
+      next: (hasEntered: boolean) => {
+        if (hasEntered && [1, 2, 3, 4].includes(this.StadeNo)) {
+          this.toastr.warning('⚠️ هذا العضو دخل بالفعل أحد الملاعب اليوم. لا يمكن التسجيل مرة أخرى.');
+          return; // منع الاستكمال
+        }
 
-    this._EntryService.addEntry(entryData).subscribe({
-      next: () => {
-        this.toastr.success('تم تسجيل دخول العضو بنجاح');
-        this.router.navigate(['/stadiumLog']);
+        // إذا لم يدخل من قبل، يتم التسجيل
+        this._StadiumService.registerEntry(entryData).subscribe({
+          next: () => {
+            this.toastr.success('✅ تم تسجيل دخول العضو بنجاح');
+            this.router.navigate(['/stadiumLog']);
+          },
+          error: () => {
+            this.toastr.error('❌ حدث خطأ أثناء التسجيل');
+          }
+        });
       },
       error: () => {
-        this.toastr.error('حدث خطأ أثناء التسجيل');
+        this.toastr.error('❌ حدث خطأ أثناء التحقق من السجلات');
       }
     });
   }
+
+
 }
