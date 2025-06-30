@@ -1,0 +1,29 @@
+<div class="container py-4">
+    <h2 class="text-center text-success mb-4">حجز برايفت - ملعب 4</h2>
+    <div class="d-flex justify-content-between mb-4">
+        <h2 class="text-success">حجز برايفت - ملعب 4</h2>
+        <button class="btn btn-outline-primary" (click)="viewTodayPrivateBookings()">حجوزات برايفت اليوم</button>
+    </div>
+
+
+    <form (ngSubmit)="submitBooking()" #form="ngForm">
+        <div class="mb-3">
+            <label class="form-label">اسم اللاعب</label>
+            <input type="text" class="form-control" required [(ngModel)]="booking.playerName" name="playerName">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">اليوم</label>
+            <input type="date" class="form-control" [(ngModel)]="booking.date" name="date">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">الساعة</label>
+            <select class="form-select" [(ngModel)]="booking.timeSlot" name="timeSlot" required>
+                <option *ngFor="let time of timeSlots" [value]="time">{{ time }}</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">تأكيد الحجز</button>
+    </form>
+</div>

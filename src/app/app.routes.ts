@@ -13,6 +13,8 @@ import { BookingComponent } from './Components/booking/booking.component';
 import { BookingTodayComponent } from './Components/booking-today/booking-today.component';
 import { LoginComponent } from './Components/login/login.component';
 import { authGuard } from './auth.guard';
+import { PrivateBookingComponent } from './Components/private-booking/private-booking.component';
+import { PrivateBookingsTodayComponent } from './Components/private-bookings-today/private-bookings-today.component';
 
 
 export const routes: Routes = [
@@ -27,6 +29,8 @@ export const routes: Routes = [
     { path: 'booking', component: BookingComponent },
     { path: 'login', component: LoginComponent },
     { path: 'today-bookings', component: BookingTodayComponent },
+    { path: 'private-booking', component: PrivateBookingComponent },
+    { path: 'private-bookings-today', component: PrivateBookingsTodayComponent },
     { path: 'entry-log', component: EntryLogComponent },
     { path: 'Entry/by-member/:memberId', component: EntryHistoryComponent },
     { path: 'stadiumLog', component: StadiumLogComponent },

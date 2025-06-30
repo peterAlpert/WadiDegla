@@ -74,4 +74,9 @@ export class BookingComponent implements OnInit {
     this._Router.navigate(['/today-bookings']);
   }
 
+  goToPrivateBooking() {
+    this._Router.navigate(['/private-booking']);
+  }
+
+
 }
