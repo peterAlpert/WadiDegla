@@ -14,18 +14,27 @@ import { BookingService } from '../../Services/booking.service';
           <tr>
             <th>اللاعب</th>
             <th>الساعة</th>
+            <th>تم الدفع</th>
+            <th>الكنترول</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let booking of privateBookings">
             <td>{{ booking.playerName }}</td>
             <td>{{ booking.timeSlot }}</td>
+            <td>
+              <span [class]="booking.isPaid ? 'text-success' : 'text-danger'">
+                {{ booking.isPaid ? '✔️ نعم' : '❌ لا' }}
+              </span>
+            </td>
+            <td>{{ booking.controlName || 'غير محدد' }}</td>
           </tr>
           <tr *ngIf="privateBookings.length === 0">
-            <td colspan="2">لا توجد حجوزات حتى الآن</td>
+            <td colspan="4">لا توجد حجوزات حتى الآن</td>
           </tr>
         </tbody>
       </table>
+
     </div>
   `
 })

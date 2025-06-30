@@ -18,8 +18,11 @@ export class PrivateBookingComponent implements OnInit {
     stadiumNo: 4,
     date: '',
     timeSlot: '',
-    type: 'private'
+    type: 'private',
+    isPaid: false,
+    controlName: ''
   };
+
 
   timeSlots: string[] = [];
 
@@ -30,8 +33,15 @@ export class PrivateBookingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.setTodayDate();
+    const today = new Date().toISOString().split('T')[0];
+    this.booking.date = today;
+
+    const controlName = localStorage.getItem('controlName');
+    this.booking.controlName = controlName ?? 'غير معروف';
+
     this.generatePrivateTimeSlots();
+
+
   }
 
   setTodayDate() {
@@ -72,7 +82,6 @@ export class PrivateBookingComponent implements OnInit {
           return;
         }
 
-        // لو مش محجوزة، يتم الحجز
         this._BookingService.addBooking(this.booking).subscribe({
           next: () => {
             this._Toastr.success('✅ تم حجز ملعب 4 بنجاح');
@@ -88,6 +97,7 @@ export class PrivateBookingComponent implements OnInit {
       }
     });
   }
+
 
   viewTodayPrivateBookings() {
     this._Router.navigate(['/private-bookings-today']);
