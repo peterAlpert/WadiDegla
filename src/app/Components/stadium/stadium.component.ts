@@ -156,8 +156,8 @@ export class StadiumComponent implements OnInit {
   }
 
   isMembershipInvalid(): boolean {
-    const value = this.member.membership;
-    return !(value && /^[٠-٩]{5,6}$/.test(value));
+    const regex = /^[0-9]{5,6}$/;
+    return !regex.test(this.member.membership?.toString() || '');
   }
 
 
