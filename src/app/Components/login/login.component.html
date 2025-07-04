@@ -13,7 +13,7 @@
                     placeholder="ادخل كلمة المرور" />
             </div>
 
-            <button class="btn btn-warning w-100 fw-bold py-2">دخول</button>
+            <button class="btn btn-warning w-100 fw-bold py-2" [disabled]="!username || !password">دخول</button>
         </form>
     </div>
 </div>
