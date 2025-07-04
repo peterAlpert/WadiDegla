@@ -38,7 +38,7 @@ export class LoginComponent {
         this._Router.navigate(['/controlInfo']);
 
       },
-      error: () => alert('بيانات الدخول غير صحيحة')
+      error: () => this._ToastrService.error("بيانات الدخول غير صحيحه")
     });
   }
 
