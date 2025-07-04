@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
@@ -19,7 +20,8 @@ export class LoginComponent {
 
   constructor(
     private _HttpClient: HttpClient,
-    private _Router: Router
+    private _Router: Router,
+    private _ToastrService: ToastrService
   ) { }
 
 
@@ -32,7 +34,9 @@ export class LoginComponent {
     this._HttpClient.post(`${environment.baseUrl}/Auth/login`, user).subscribe({
       next: (res: any) => {
         localStorage.setItem('token', res.token);
-        this._Router.navigate(['/']);
+        this._ToastrService.success("تم تسجيل الدخول بنجاح")
+        this._Router.navigate(['/controlInfo']);
+
       },
       error: () => alert('بيانات الدخول غير صحيحة')
     });
