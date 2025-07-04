@@ -5,15 +5,21 @@ import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 
 import { registerLocaleData } from '@angular/common';
 import localeArEg from '@angular/common/locales/ar-EG';
+import { AuthInterceptor } from '../auth.interceptor';
 
 registerLocaleData(localeArEg);
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(),
     provideRouter(routes),
