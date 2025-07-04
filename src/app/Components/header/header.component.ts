@@ -1,7 +1,7 @@
 import { SharedService } from './../../Services/shared.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +12,12 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   controlName: string | null = null;
+  token: string | null = null;
+
 
   constructor(
-    private _SharedService: SharedService
+    private _SharedService: SharedService,
+    private _Router: Router
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +25,14 @@ export class HeaderComponent implements OnInit {
     this._SharedService.controlName$.subscribe(name => {
       this.controlName = name;
     });
+
+    this._SharedService.token$.subscribe(token => this.token = token);
+  }
+
+  logout() {
+    this._SharedService.clearToken();
+    this._SharedService.clearControlName();
+    this._Router.navigate(['/login'])
   }
 
 

@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md px-4 shadow-sm" style="background-color: black;">
     <div class="container-fluid text-warning">
+
         <!-- الشعار + رسالة الترحيب -->
         <a class="navbar-brand me-auto d-flex align-items-center gap-2" routerLink="/enterStadium">
             <img src="Assets/WDLogo.jfif" width="60" />
@@ -24,6 +25,9 @@
                 <button class="btn btn-outline-light btn-sm" routerLink="/booking">حجز ملعب</button>
                 <button class="btn btn-outline-light btn-sm" routerLink="/stadiumLog">بيانات الملاعب</button>
                 <button class="btn btn-outline-light btn-sm" routerLink="/enterStadium">إضافة لاعب</button>
+
+                <!-- زر تسجيل الخروج يظهر فقط لو في توكن -->
+                <button *ngIf="token" class="btn btn-outline-warning btn-sm" (click)="logout()">تسجيل الخروج</button>
             </div>
         </div>
     </div>
